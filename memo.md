@@ -16,8 +16,18 @@
 
 ### `node_modules` への参照
 
+あれ？`npm` で落とすと、もうバンドルされている。。。？
+
+[Node.jsでパッケージが参照しているnode_modulesのパスを取得する - tom-256.log](https://mzqvis6akmakplpmcjx3.hatenablog.com/entry/2022/05/21/185607)
+
+[TypeScriptのESMでハマる - くらげになりたい。](https://www.memory-lovers.blog/entry/2022/05/31/110000)
+
+[Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
+
 ## 設定手順
 
 node のバージョンは大きく指定がなかったので、
 
 p5.js Editor　だと14 っぽい
+
+[npm ciを使おう あるいはより速く - Qiita](https://qiita.com/mstssk/items/8759c71f328cab802670)
