@@ -26,5 +26,6 @@
     "express": "latest",
     "rollup": "latest"
   },
-  "type": "module"
+  "type": "module",
+  "main": "src/js/p5Main.js"
 }
