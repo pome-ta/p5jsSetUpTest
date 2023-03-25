@@ -22,7 +22,9 @@
     "p5": "latest"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "express": "latest",
     "rollup": "latest"
-  }
+  },
+  "type": "module"
 }
