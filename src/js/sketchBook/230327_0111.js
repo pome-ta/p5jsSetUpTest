@@ -2,8 +2,13 @@ import { p5 } from './modules/p5Main.bundle.js';
 
 const sketch = (p) => {
   p.setup = () => {
-    // put setup code here
+    // 設定と背景
+    //console.log(document.body);
+    // p.createCanvas(document.body.clientWidth, document.body.clientHeight);
+    //p.createCanvas(300, 400);
     p.createCanvas(p.windowWidth, p.windowHeight);
+    //console.log(p.windowWidth);
+    //console.log(document.body.clientWidth);
     p.smooth();
     p.background(230, 230, 230);
     // 2本の交差した直線を描く
@@ -25,11 +30,10 @@ const sketch = (p) => {
     p.fill(255, 150);
     p.ellipse(p.width / 2, p.height / 2, 50, 50);
   };
-  p.draw = () => {
-    // put drawing code here
-  };
+  p.draw = () => {};
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
 
 // const myp5 = new p5(sketch);
+
