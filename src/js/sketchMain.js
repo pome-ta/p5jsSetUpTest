@@ -28,4 +28,4 @@ const sketch = (p) => {
   p.draw = () => {};
 };
 
-new p5(sketch);
+const myp5 = new p5(sketch, 'p5Canvas');
