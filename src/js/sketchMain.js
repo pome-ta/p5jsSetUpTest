@@ -3,7 +3,11 @@ import { p5 } from './modules/p5Main.bundle.js';
 const sketch = (p) => {
   p.setup = () => {
     // 設定と背景
-    p.createCanvas(500, 300);
+    console.log(document.body);
+    // p.createCanvas(document.body.clientWidth, document.body.clientHeight);
+    p.createCanvas(300, 400);
+    console.log(p.windowWidth);
+    console.log(document.body.clientWidth);
     p.smooth();
     p.background(230, 230, 230);
     // 2本の交差した直線を描く
@@ -29,3 +33,5 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+
+// const myp5 = new p5(sketch);

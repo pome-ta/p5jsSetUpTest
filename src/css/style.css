@@ -1,5 +1,12 @@
+html {
+  height: 100%;
+}
+
 body {
-  padding: 0;
-  margin: 0;
+  /* padding: 0; */
+  /* margin: 0; */
   background-color: #1b1b1b;
+  margin: auto;
+  height: 100vh;
+  height: 100dvh;
 }
