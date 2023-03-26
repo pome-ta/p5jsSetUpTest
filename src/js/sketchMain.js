@@ -1,5 +1,5 @@
-// import { p5 } from './modules/p5Main.bundle.js';
-import p5 from 'https://cdn.skypack.dev/p5';
+import { p5 } from './modules/p5Main.bundle.js';
+// import p5 from 'https://cdn.skypack.dev/p5';
 
 const sketch = (p) => {
   let num;

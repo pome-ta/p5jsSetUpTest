@@ -22,10 +22,9 @@
     "p5": "latest"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "express": "latest",
     "rollup": "latest"
-  },
-  "type": "module",
-  "main": "src/js/p5Main.js"
+  }
 }
