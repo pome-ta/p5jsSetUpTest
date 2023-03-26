@@ -1,19 +1,31 @@
 import { p5 } from './modules/p5Main.bundle.js';
-// import p5 from 'https://cdn.skypack.dev/p5';
 
 const sketch = (p) => {
-  let num;
   p.setup = () => {
-    num = 0;
-    p.createCanvas(400, 400);
+    // 設定と背景
+    p.createCanvas(500, 300);
+    p.smooth();
+    p.background(230, 230, 230);
+    // 2本の交差した直線を描く
+    p.stroke(130, 0, 0);
+    p.strokeWeight(4);
+    p.line(
+      p.width / 2 - 70,
+      p.height / 2 - 70,
+      p.width / 2 + 70,
+      p.height / 2 + 70
+    );
+    p.line(
+      p.width / 2 + 70,
+      p.height / 2 - 70,
+      p.width / 2 - 70,
+      p.height / 2 + 70
+    );
+    // 円を描く
+    p.fill(255, 150);
+    p.ellipse(p.width / 2, p.height / 2, 50, 50);
   };
-  p.draw = () => {
-    num += 1;
-    p.background(220);
-    p.ellipse(50, num, 80, 80);
-  };
+  p.draw = () => {};
 };
 
-console.log(p5);
 new p5(sketch);
-// console.log('hoge');
