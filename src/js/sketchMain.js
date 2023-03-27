@@ -1,7 +1,9 @@
-import { p5 } from './modules/p5Main.bundle.js';
-//console.log(p5)
+// import p5 from 'https://cdn.skypack.dev/p5';
+import './p5Setup.js';
+import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
+  let osc;
   let _angnoise, _radiusnoise;
   let _xnoise, _ynoise;
   let _angle = -p.PI / 2;
@@ -11,7 +13,7 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    p.createCanvas(p.windowWidth, p.windowHeight);
+    const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
     p.smooth();
     p.background(255);
     p.frameRate(60);
@@ -21,6 +23,11 @@ const sketch = (p) => {
     _radiusnoise = p.random(10);
     _xnoise = p.random(10);
     _ynoise = p.random(10);
+    osc = new p5.Oscillator('sine');
+    osc.amp(0.5);
+    osc.freq(440);
+    console.log(p.canvas);
+    canvas.mousePressed(p.play);
   };
   p.draw = () => {
     // put drawing code here
@@ -56,7 +63,11 @@ const sketch = (p) => {
     p.strokeWeight(1);
     p.line(x1, y1, x2, y2);
   };
+  p.play = () => {
+    console.log('hoge');
+    osc.start();
+    // osc.stop(1);
+  };
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
-console.log(myp5);

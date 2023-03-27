@@ -6,6 +6,14 @@
 
 issue 上がっているけど、解決していない？
 
+### あった
+
+[ReactとTypeScriptで始めるp5.js - 頑張らないために頑張る](https://ysko909.github.io/posts/use-p5js-with-react/)
+
+やはり、えっちらほっちら、投げ合わないといけないみたいだ。。。
+
+これ、バージョン上がったら変わりそうやな。。。
+
 # 📝 2023/03/26
 
 ## `instance mode` で構築
