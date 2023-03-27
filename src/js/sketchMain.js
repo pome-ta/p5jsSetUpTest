@@ -1,4 +1,5 @@
 import { p5 } from './modules/p5Main.bundle.js';
+//console.log(p5)
 
 const sketch = (p) => {
   let _angnoise, _radiusnoise;
@@ -58,3 +59,5 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+console.log(myp5)
+
