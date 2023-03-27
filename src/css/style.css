@@ -10,3 +10,8 @@ body {
   height: 100vh;
   height: 100dvh;
 }
+
+.p5Canvas {
+  display:block;
+}
+
