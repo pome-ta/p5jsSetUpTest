@@ -1,6 +1,6 @@
 // import p5 from 'https://cdn.skypack.dev/p5';
 import './p5Setup.js';
-// import './modules/p5Sound.bundle.js';
+import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs;
@@ -9,7 +9,7 @@ const sketch = (p) => {
   let r, x;
 
   function drawCircle() {
-    console.log(2);
+    //console.log(2);
     p.clear();
     p.circle(x, p.height / 2, r * 2);
   }
