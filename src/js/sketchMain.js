@@ -14,23 +14,27 @@ const sketch = (p) => {
     p.circle(x, p.height / 2, r * 2);
   }
 
+  function ppp() {
+    x += 10;
+    drawCircle();
+  }
+
+  const play = () => {
+    x += 10;
+    drawCircle();
+  };
+
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(w, h);
     r = p.min(p.width, p.height) / 6;
     x = r;
     drawCircle();
-  };
-  p.mouseClicked = () => {
-    x += 10;
-    drawCircle();
+    // cnvs.mousePressed(p.play);
+    // cnvs.mouseClicked(play);
+    cnvs.mouseClicked(ppp);
   };
 
-  // ctx.mouseClicked = () => {
-  //   console.log(1);
-  //   x += 10;
-  //   drawCircle();
-  // };
   p.draw = () => {
     // put drawing code here
   };
