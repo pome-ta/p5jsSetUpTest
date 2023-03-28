@@ -1,3 +1,4 @@
+
 # 📝 2023/03/28
 
 ## `p5.sound` が読み込めん
@@ -13,6 +14,54 @@ issue 上がっているけど、解決していない？
 やはり、えっちらほっちら、投げ合わないといけないみたいだ。。。
 
 これ、バージョン上がったら変わりそうやな。。。
+
+### `min` は入らないか、、、
+
+エラーになってしまう
+
+```console
+./src/js/p5Sound.js → ./src/js/modules/p5Sound.bundle.js...
+[!] RollupError: "default" is not exported by "node_modules/p5/lib/addons/p5.sound.min.js", imported by "src/js/p5Sound.js".
+https://rollupjs.org/troubleshooting/#error-name-is-not-exported-by-module
+src/js/p5Sound.js (2:9)
+1: export * from 'p5/lib/addons/p5.sound.min.js';
+2: export { default } from 'p5/lib/addons/p5.sound.min.js';
+            ^
+    at error (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:274:30)
+    at Module.error (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:13820:16)
+    at Module.getVariableForExportName (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:13974:29)
+    at Module.includeAllExports (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:14047:37)
+    at Graph.includeStatements (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:25173:36)
+    at Graph.build (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:25089:14)
+    at async /Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:26007:13
+    at async catchUnfinishedHookActions (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:25256:20)
+    at async rollupInternal (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/shared/rollup.js:26002:5)
+    at async build (/Users/pometa/Documents/GitHub/p5jsSetUpTest/node_modules/rollup/dist/bin/rollup:1541:20)
+
+```
+
+## タップとか
+
+`mouseClicked` が効かない？
+
+それとは別に
+
+[iPhone/iPadで動くWebBluetoothアプリをp5.jsで作る方向けのメモ - Qiita](https://qiita.com/tetunori_lego/items/363d0a47a5bbc4ffabd1#web%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8%E3%81%97%E3%81%A6%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E6%BA%96%E5%82%99)
+
+メタタグとか入れるか
+
+```html
+  <head>
+    <!-- ... -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script>
+      window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+    </script>
+    <!-- ... -->
+  </head>
+```
 
 # 📝 2023/03/26
 

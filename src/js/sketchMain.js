@@ -3,6 +3,7 @@ import './p5Setup.js';
 // import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
+  let cnvs;
   let w = p.windowWidth;
   let h = p.windowHeight;
   let r, x;
@@ -15,18 +16,21 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    p.createCanvas(w, h);
+    cnvs = p.createCanvas(w, h);
     r = p.min(p.width, p.height) / 6;
     x = r;
     drawCircle();
-    console.log(p);
   };
-
   p.mouseClicked = () => {
-    console.log(1);
     x += 10;
     drawCircle();
   };
+
+  // ctx.mouseClicked = () => {
+  //   console.log(1);
+  //   x += 10;
+  //   drawCircle();
+  // };
   p.draw = () => {
     // put drawing code here
   };
