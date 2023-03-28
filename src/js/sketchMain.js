@@ -3,6 +3,7 @@ import './p5Setup.js';
 import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
+  let isPlaying = false;
   let osc;
   let _angnoise, _radiusnoise;
   let _xnoise, _ynoise;
@@ -23,14 +24,17 @@ const sketch = (p) => {
     _radiusnoise = p.random(10);
     _xnoise = p.random(10);
     _ynoise = p.random(10);
+    // spund
     osc = new p5.Oscillator('sine');
     osc.amp(0.5);
     osc.freq(440);
-    console.log(p.canvas);
+    
     canvas.mousePressed(p.play);
   };
   p.draw = () => {
     // put drawing code here
+    console.log(p.frameCount)
+    if(isPlaying) osc.freq(440 + (p.sin(p.frameCount) *2-1));
     _radiusnoise += 0.005;
     _radius = p.noise(_radiusnoise) * 550 + 1;
     _angnoise += 0.005;
@@ -64,7 +68,7 @@ const sketch = (p) => {
     p.line(x1, y1, x2, y2);
   };
   p.play = () => {
-    console.log('hoge');
+    isPlaying = true
     osc.start();
     // osc.stop(1);
   };
