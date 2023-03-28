@@ -1,6 +1,6 @@
 // import p5 from 'https://cdn.skypack.dev/p5';
 import './p5Setup.js';
-import './modules/p5Sound.bundle.js';
+//import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let w = p.windowWidth;
@@ -8,31 +8,12 @@ const sketch = (p) => {
   
   p.setup = () => {
     // put setup code here
-    const canvas = p.createCanvas(w, h);
-    p.smooth();
-    p.background(255);
-    
-    p.text('Attention, please.', w/2, h/2);
-    
-    p.stroke("#FF0000");
-    p.line(w/2, 0, w/2, h);
-    
-    p.stroke("#00ff00");
-    p.line(0, h/2, w, h/2);
-    
-    
-    
-    //p.frameRate(60);
-    //p.noFill();
-    
-    p.noLoop();
+    p.createCanvas(w, h);
+    p.circle(p.width/2, p.height/2, 50);
 
   };
   p.draw = () => {
     // put drawing code here
-    
-    
-    
   };
 };
 

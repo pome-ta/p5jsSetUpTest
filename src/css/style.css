@@ -1,14 +1,9 @@
-/* html {
-  height: 100%;
-} */
-
 body {
   /* padding: 0; */
   /* margin: 0; */
-  background-color: #1b1b1b;
+  /* background-color: #1b1b1b; */
+  background-color: #292a33;
   margin: auto;
-  /* height: 100vh; */
-  /* height: 100dvh; */
 }
 
 .p5Canvas {
