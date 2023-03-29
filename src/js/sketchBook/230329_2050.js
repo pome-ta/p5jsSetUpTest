@@ -22,8 +22,7 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
     d++;
-    const overMin = p.min(w, h) / 2;
-    if (d > overMin) {
+    if (d > p.min(w, h) / 2) {
       reset();
     }
     p.clear();
@@ -34,21 +33,10 @@ const sketch = (p) => {
     p.circle(w / 2, h / 2, d);
 
     p.push();
-
     p.noStroke();
     p.fill(240);
     p.textAlign(p.LEFT, p.TOP);
     p.text(s, 0, 0);
-
-    p.stroke('#FF0000');
-    p.line(0, h / 2, w, h / 2);
-    p.line(w / 2, 0, w / 2, h);
-    p.stroke('#00ff00');
-    p.line(0, h / 2 - overMin / 2, w, h / 2 - overMin / 2);
-    p.line(0, h / 2 + overMin / 2, w, h / 2 + overMin / 2);
-    p.line(w / 2 - overMin / 2, 0, w / 2 - overMin / 2, h);
-    p.line(w / 2 + overMin / 2, 0, w / 2 + overMin / 2, h);
-
     p.pop();
   };
 };
