@@ -1,5 +1,5 @@
 import './p5Setup.js';
-import './modules/p5Sound.bundle.js';
+//import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -13,7 +13,27 @@ const sketch = (p) => {
 
     p.noFill();
     p.stroke(255);
-    p.rect(20, 30, 40, 50);
+    const ww = w / 2
+    const hh = h / 2
+    
+    // todo: guide
+    p.push();
+    p.stroke('#FF0000');
+    p.line(ww, 0, ww, h);
+    p.stroke('#00ff00');
+    p.line(0, hh, w, hh);
+    p.pop();
+    
+    p.push();
+    p.drawingContext.setLineDash([2, 2]);
+    p.rect(ww - (ww / 1.5), hh - (hh / 1.5), 30, 40)
+    
+    p.pop();
+    
+    
+    p.rect(ww - (ww / 1.5), hh - (hh / 1.5), w / 1.5, h / 1.5);
+    
+    
 
     p.noLoop();
   };
