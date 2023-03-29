@@ -24,11 +24,14 @@ const sketch = (p) => {
     if (p.frameCount % 30 === 0) {
       s = p.frameRate().toFixed(0);
     }
+    p.textAlign(p.CENTER, p.TOP);
     
     p.push();
     p.noStroke();
     p.fill(240);
-    p.text(s, 20, 20);
+    
+    const t = p.text(s, 24, 24);
+    p.text(`${t.height}`, 48, 48)
     p.pop();
   };
 };
