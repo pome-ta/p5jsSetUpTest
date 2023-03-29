@@ -28,13 +28,13 @@ const sketch = (p) => {
     osc = new p5.Oscillator('sine');
     osc.amp(0.5);
     osc.freq(440);
-    
+
     canvas.mousePressed(p.play);
   };
   p.draw = () => {
     // put drawing code here
-    console.log(p.frameCount)
-    if(isPlaying) osc.freq(440 + (p.sin(p.frameCount) *2-1));
+    console.log(p.frameCount);
+    if (isPlaying) osc.freq(440 + (p.sin(p.frameCount) * 2 - 1));
     _radiusnoise += 0.005;
     _radius = p.noise(_radiusnoise) * 550 + 1;
     _angnoise += 0.005;
@@ -68,11 +68,10 @@ const sketch = (p) => {
     p.line(x1, y1, x2, y2);
   };
   p.play = () => {
-    isPlaying = true
+    isPlaying = true;
     osc.start();
     // osc.stop(1);
   };
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
-
