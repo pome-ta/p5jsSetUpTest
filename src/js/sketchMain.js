@@ -27,10 +27,12 @@ const sketch = (p) => {
     
     const minSize = p.min(ww, hh)
     const margin = 4
-    
-    const redC = p.circle(ww, hh - hh / margin, minSize);
-    const greenC = p.circle(ww - ww / margin, hh, minSize);
-    const blueC = p.circle(ww + ww / margin, hh, minSize);
+    p.fill('#ff000080')
+    const redC = p.circle(ww, hh - hh / margin/2, minSize);
+    p.fill('#00ff0080')
+    const greenC = p.circle(ww + ww / margin, hh + hh / margin/2, minSize);
+    p.fill('#0000ff80')
+    const blueC = p.circle(ww - ww / margin, hh+hh/margin/2, minSize);
 
     p.noLoop();
   };
