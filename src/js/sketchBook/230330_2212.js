@@ -16,14 +16,13 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
     // xxx: 360 でスマートに書けそう
-    c = p.abs(p.sin(p.frameCount * p.PI / 100))
+    c = p.abs(p.sin((p.frameCount * p.PI) / 100));
     p.clear();
     p.text(c, 24, 24);
-    
+
     p.fill(c, 1, 1);
-    p.circle(w/2, h/2, p.min(w,h)/2);
+    p.circle(w / 2, h / 2, p.min(w, h) / 2);
   };
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
-
