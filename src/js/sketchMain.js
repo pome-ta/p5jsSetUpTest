@@ -3,25 +3,40 @@ import './p5Setup.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let c = 0;
+  let x1, x2, x, y;
 
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     w = p.width;
     h = p.height;
-    p.colorMode(p.HSB, 1.0, 1, 1);
+    
+    p.textAlign(p.CENTER, p.CENTER);
+    
+    const outMargin = 24;
+    x1 = outMargin;
+    x2 = w - outMargin;
+    x = x1;
+    y = h / 2;
+    
   };
 
   p.draw = () => {
     // put drawing code here
-    // xxx: 360 でスマートに書けそう
-    c = p.abs(p.sin(p.frameCount * p.PI / 100))
+    //x++;
+    x = (x > x2) ? x1 : x+1;
     p.clear();
-    p.text(c, 24, 24);
     
-    p.fill(c, 1, 1);
-    p.circle(w/2, h/2, p.min(w,h)/2);
+    p.noStroke();
+    p.fill(240);
+    p.text(x1, x1, y - 65);
+    p.text(x2, x2, y - 65);
+    p.text(x, x, y - 65);
+    p.text(p.norm(x, x1, x2).toFixed(2), x, y + 65);
+    p.text(0, x1, y + 65);
+    p.text(1, x2, y + 65);
+    
+    
   };
 };
 
