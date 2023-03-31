@@ -3,67 +3,47 @@ import './p5Setup.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let x1, x2, x, y;
+  
 
   function reset() {
-    const outMargin = 200;
-    x1 = outMargin;
-    x2 = w - outMargin;
-    // x = x1;
-    y = h / 2;
+    w = p.width;
+    h = p.height;
   }
 
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    w = p.width;
-    h = p.height;
-    //p.frameRate(15);
-
-    p.textAlign(p.CENTER, p.CENTER);
     reset();
-    x = x1;
+    p.background(0);
+
+    const yn = 30;
+    const xn = 60;
+    
+    for (let y = 0; y < yn; y++) {
+      for (let x = 0; x < xn; x++) {
+        const tx = (w / (xn - 1)) * x;
+        const ty = (h / (yn - 1)) * y;
+  
+        const r = p.map(tx, 0, w, 0, 255);
+        const g = p.map(ty, 0, h, 0, 255);
+        p.fill(r, g, 0);
+        p.circle(tx, ty, 10);
+      }
+    }
+    p.noLoop()
+
   };
 
   p.draw = () => {
     // put drawing code here
-    //x++;
-    x = x < x2 ? x + 1 : x1;
-    p.clear();
-
-    p.noStroke();
-    p.fill(240);
-    p.text(x1, x1, y - 65);
-    p.text(x2, x2, y - 65);
-    p.text(x, x, y - 65);
-    p.text(p.norm(x, x1, x2).toFixed(2), x, y + 65);
-    p.text(0, x1, y + 65);
-    p.text(1, x2, y + 65);
-
-    p.stroke(240);
-    p.noFill();
-    p.line(x1, y - 45, x1, y - 25);
-    p.line(x2, y - 45, x2, y - 25);
-    p.line(x, y - 45, x, y - 25);
-    p.line(x, y + 45, x, y + 25);
-    p.line(x1, y + 45, x1, y + 25);
-    p.line(x2, y + 45, x2, y + 25);
-
-    p.stroke(240);
-    p.noFill();
-    p.line(x1, y, x2, y);
-
-    p.stroke(240);
-    p.fill('#292a33');
-    p.circle(x, y, 20);
+    
   };
 
   p.windowResized = () => {
     cnvs = p.resizeCanvas(p.windowWidth, p.windowHeight);
-    w = p.width;
-    h = p.height;
     reset();
   };
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+
