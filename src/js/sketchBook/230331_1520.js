@@ -8,8 +8,13 @@ const sketch = (p) => {
   function reset() {
     w = p.width;
     h = p.height;
+  }
+
+  p.setup = () => {
+    // put setup code here
+    cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
+    reset();
     p.background(0);
-    //p.colorMode(HSB);
 
     const yn = h / 8;
     const xn = w / 8;
@@ -29,13 +34,6 @@ const sketch = (p) => {
       }
     }
     p.noLoop()
-  }
-
-  p.setup = () => {
-    // put setup code here
-    cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    reset();
-
 
   };
 
