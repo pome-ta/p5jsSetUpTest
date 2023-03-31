@@ -8,7 +8,7 @@ const sketch = (p) => {
     w = p.width;
     h = p.height;
     p.background(0);
-    //p.colorMode(HSB);
+    p.colorMode(HSB);
 
     const yn = h / 8;
     const xn = w / 8;
