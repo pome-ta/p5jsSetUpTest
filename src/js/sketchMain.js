@@ -16,8 +16,8 @@ const sketch = (p) => {
     reset();
     p.background(0);
 
-    const yn = 30;
-    const xn = 60;
+    const yn = h / 8;
+    const xn = w / 8;
     
     for (let y = 0; y < yn; y++) {
       for (let x = 0; x < xn; x++) {
