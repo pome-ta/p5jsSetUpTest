@@ -6,7 +6,7 @@ const sketch = (p) => {
   let x1, x2, x, y;
 
   function reset() {
-    const outMargin = 32;
+    const outMargin = 200;
     x1 = outMargin;
     x2 = w - outMargin;
     // x = x1;
@@ -18,6 +18,7 @@ const sketch = (p) => {
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     w = p.width;
     h = p.height;
+    //p.frameRate(15);
 
     p.textAlign(p.CENTER, p.CENTER);
     reset();
@@ -27,8 +28,7 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
     //x++;
-    x = x >= x2 ? x1 : x + 1;
-    console.log(x);
+    x = x < x2 ? x + 1 : x1;
     p.clear();
 
     p.noStroke();
@@ -67,3 +67,4 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+
