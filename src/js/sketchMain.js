@@ -10,15 +10,14 @@ const sketch = (p) => {
     reset();
   };
 
-  // function reset() {
   const reset = () => {
     w = p.width;
     h = p.height;
     p.background(0);
     p.colorMode(p.HSB);
 
-    const yn = (h / 8) * 0.8;
-    const xn = (w / 8) * 0.8;
+    const yn = (h / 16);
+    const xn = (w / 16);
     const maxDist = p.dist(0, 0, w / 2, h / 2);
 
     for (let y = 0; y < yn; y++) {
