@@ -1,5 +1,5 @@
 import './p5Setup.js';
-import './modules/p5Sound.bundle.js';
+//import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -7,7 +7,6 @@ const sketch = (p) => {
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    const osc = p5.Oscillator('sine')
     reset();
   };
 
@@ -47,3 +46,4 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+
