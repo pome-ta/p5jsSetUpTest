@@ -1,5 +1,5 @@
 import './p5Setup.js';
-//import './modules/p5Sound.bundle.js';
+import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
