@@ -12258,7 +12258,7 @@ var p5_sound$1 = {};
 	p5.Signal = deprecations_Signal;
 
 	 })
-	 ]);
+	 ]); 
 } ());
 
 var p5_sound = /*@__PURE__*/getDefaultExportFromCjs(p5_sound$1);
