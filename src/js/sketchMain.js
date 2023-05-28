@@ -3,7 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  console.log(p)
+  console.log(p5)
 
   p.setup = () => {
     // put setup code here
