@@ -3,13 +3,15 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  console.log(p5)
+  // console.log(p5)
 
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    //const osc = p.p5_sound.Oscillator('sine')
-    
+    // console.log(window);
+    const osc = new p5.Oscillator('sine');
+    osc.start();
+
     reset();
   };
 
@@ -19,8 +21,8 @@ const sketch = (p) => {
     p.background(0);
     p.colorMode(p.HSB);
 
-    const yn = (h / 16);
-    const xn = (w / 16);
+    const yn = h / 16;
+    const xn = w / 16;
     const maxDist = p.dist(0, 0, w / 2, h / 2);
 
     for (let y = 0; y < yn; y++) {
