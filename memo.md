@@ -1,3 +1,42 @@
+# 📝 2023/05/27
+
+## `p5Main.bundle.js` 文字化けてない？
+
+`.src/js/p5Main.js` での読み込みが
+
+```javascript
+import p5 from 'p5/lib/p5.min';
+
+```
+
+だが、bundle すると、`U+2004` やら`U+2005` やら`U+00a0` やらで吐き出してしまう？
+
+```javascript
+{
+147:[function(e,t,r){t.exports="\t\n\v\f\r                　\u2028\u2029\ufeff";},{}],
+}
+```
+
+↑　非表示文字たち
+
+`min` していない場合だと、22329行目の`165` 宣言のところ
+
+> // すべての有効な Unicode 空白文字列 eslint-disable-next-line max-len
+
+```javascript
+    165: [
+      function (_dereq_, module, exports) {
+        // a string of all valid unicode whitespaces
+        // eslint-disable-next-line max-len
+        module.exports = '\t\n\v\f\r                　\u2028\u2029﻿';
+      },
+      {
+      }
+    ],
+```
+
+`min` でないと、`eval` で怒られている
+
 # 📝 2023/05/26
 
 `index.html` の読み込みの順番でもなさそうだな？
