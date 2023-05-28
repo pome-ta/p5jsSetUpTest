@@ -51,12 +51,11 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
+//const p5canvas = document.querySelector('#p5Canvas')
+//p5canvas.addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
 
-window.addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
-/*
-{
-          event.preventDefault();
-        },
-        { passive: false }
-      );*/
+
+document.querySelector('#p5Canvas').addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
+
+
 console.log(myp5)
