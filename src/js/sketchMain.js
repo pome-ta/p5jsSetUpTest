@@ -11,6 +11,7 @@ const sketch = (p) => {
     // console.log(window);
     const osc = new p5.Oscillator('sine');
     osc.start();
+    console.log(osc)
 
     reset();
   };
@@ -50,12 +51,18 @@ const sketch = (p) => {
   };
 };
 
-const myp5 = new p5(sketch, 'p5Canvas');
+//let myp5;
+
+//document.addEventListener('DOMContentLoaded', {
+document.addEventListener('DOMContentLoaded', ()=>{
+  const myp5 = new p5(sketch, 'p5Canvas');
+  document.querySelector('#p5Canvas').addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
+
+});
+
+
+
 //const p5canvas = document.querySelector('#p5Canvas')
 //p5canvas.addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
 
 
-document.querySelector('#p5Canvas').addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
-
-
-console.log(myp5)

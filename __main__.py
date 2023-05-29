@@ -12,8 +12,9 @@ class View(ui.View):
   def __init__(self, url, *args, **kwargs):
     ui.View.__init__(self, *args, **kwargs)
     self.wv = WKWebView()
-    self.wv.load_url(str(url))
     self.wv.flex = 'WH'
+    self.wv.load_url(str(url))
+    
     self.refresh_webview()
     self.add_subview(self.wv)
     self.set_reload_btn()
