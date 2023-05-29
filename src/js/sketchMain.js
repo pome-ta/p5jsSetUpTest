@@ -3,15 +3,17 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
+  let osc;
   // console.log(p5)
 
   p.setup = () => {
     // put setup code here
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     // console.log(window);
-    const osc = new p5.Oscillator('sine');
-    osc.start();
-    console.log(osc)
+    osc = new p5.Oscillator('sine');
+    //osc.start();
+    cnvs.mousePressed(p.play)
+    //console.log(osc)
 
     reset();
   };
@@ -43,6 +45,10 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
+  };
+  
+  p.play = () => {
+    osc.start();
   };
 
   p.windowResized = () => {
