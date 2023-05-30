@@ -5,6 +5,10 @@
 
 [reference | p5.Oscillator](https://p5js.org/reference/#/p5.Oscillator)
 
+### 挑戦するか？
+
+[4:サウンドの作成と加工(エンベロープ) p5.sound.js サウンド – HIM.CO ヒム・カンパニー](https://himco.jp/2020/01/09/4%EF%BC%9A%E3%82%B5%E3%82%A6%E3%83%B3%E3%83%89%E3%81%AE%E5%8A%A0%E5%B7%A5%E3%80%81%E4%BD%9C%E6%88%90-p5-sound-js-%E3%82%B5%E3%82%A6%E3%83%B3%E3%83%89/)
+
 
 ## 参照先忘れてた
 
