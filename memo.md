@@ -1,3 +1,8 @@
+# 📝 2023/05/30
+
+
+[reference | p5.Oscillator](https://p5js.org/reference/#/p5.Oscillator)
+
 # 📝 2023/05/27
 
 ## `p5Main.bundle.js` 文字化けてない？
