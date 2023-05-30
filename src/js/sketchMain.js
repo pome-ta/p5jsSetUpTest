@@ -45,10 +45,9 @@ const sketch = (p) => {
     // put drawing code here
     t++;
     const sinVal = p.sin(t);
-    osc.freq(osc.freq + (sinVal * 10))
-    
+    osc.freq(osc.freq + sinVal * 10);
   };
-  
+
   p.play = () => {
     osc.start();
   };
@@ -59,10 +58,11 @@ const sketch = (p) => {
   };
 };
 
-
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
   const myp5 = new p5(sketch, 'p5Canvas');
-  document.querySelector('#p5Canvas').addEventListener('touchmove', (e)=>  e.preventDefault(), {passive: false});
-
+  document
+    .querySelector('#p5Canvas')
+    .addEventListener('touchmove', (e) => e.preventDefault(), {
+      passive: false,
+    });
 });
-
