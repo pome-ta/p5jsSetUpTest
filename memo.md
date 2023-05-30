@@ -1,7 +1,16 @@
 # 📝 2023/05/30
 
 
+## 音出す
+
 [reference | p5.Oscillator](https://p5js.org/reference/#/p5.Oscillator)
+
+
+## 参照先忘れてた
+
+勉強どころ
+
+[クリエイティブコーディングの教科書](https://zenn.dev/baroqueengine/books/a19140f2d9fc1a)
 
 # 📝 2023/05/27
 
