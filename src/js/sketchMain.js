@@ -23,8 +23,8 @@ const sketch = (p) => {
     p.background(0);
     p.colorMode(p.HSB);
 
-    const yn = h / 64;
-    const xn = w / 64;
+    const yn = h / 6;
+    const xn = w / 6;
     const maxDist = p.dist(0, 0, w / 2, h / 2);
 
     for (let y = 0; y < yn; y++) {
