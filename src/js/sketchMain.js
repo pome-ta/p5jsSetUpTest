@@ -42,7 +42,7 @@ const sketch = (p) => {
         p.circle(tx, ty, 10);
       }
     }
-    //p.noLoop();
+    p.noLoop();
   };
 
   p.draw = () => {
