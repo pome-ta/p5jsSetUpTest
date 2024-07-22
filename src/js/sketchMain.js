@@ -13,7 +13,7 @@ const sketch = (p) => {
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     //osc = new p5.Oscillator('sine');
     //cnvs.mousePressed(p.play);
-    console.log(1);
+    console.log(p);
     
     reset();
   };
