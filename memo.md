@@ -3,6 +3,11 @@
 アプデしていく
 
 
+[p5.js Web Editor で JavaScript のモジュール（ES Modules）を扱う【その2】： simplex-noise.js の CDN からの import でダイナミックインポートを使う #p5.jsWebEditor - Qiita](https://qiita.com/youtoy/items/838dce76d5be0d44fa14)
+
+アプデついでに、インポートも調べる
+
+
 # 📝 2023/05/31
 
 
