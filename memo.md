@@ -3,9 +3,16 @@
 アプデしていく
 
 
+## 勉強し直し
+
+### インポート
+
 [p5.js Web Editor で JavaScript のモジュール（ES Modules）を扱う【その2】： simplex-noise.js の CDN からの import でダイナミックインポートを使う #p5.jsWebEditor - Qiita](https://qiita.com/youtoy/items/838dce76d5be0d44fa14)
 
-アプデついでに、インポートも調べる
+### インスタンス・グローバル
+
+
+[p5.js 覚え書き](https://zenn.dev/suto3/articles/5e2a357c6be7bdcc4bd5)
 
 
 # 📝 2023/05/31
