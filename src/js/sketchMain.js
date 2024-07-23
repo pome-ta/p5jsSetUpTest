@@ -1,62 +1,46 @@
 import './p5Setup.js';
-import './modules/p5Sound.bundle.js';
+//import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let t;
-  let noise, env, analyzer;
   
-  const reset = () => {
+
+  function reset() {
     w = p.width;
     h = p.height;
-    // p.noLoop();
-  };
+  }
 
   p.setup = () => {
     // put setup code here
-    t = 0;
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    p.background(0);
-    
-    
-    noise = new p5.Noise();
-    // 振幅エンベロープを作成
-    env = new p5.Envelope();
-    // attackTime, decayTime, sustainRatio, releaseTimeを設定
-    env.setADSR(0.001, 0.1, 0.2, 0.1);
-    // attackLevel, releaseLevelを設定
-    env.setRange(1, 0);
-
-    // p5.Amplitudeは、setInput()メソッドで入力を指定しない場合、
-    // スケッチのすべてのサウンドを分析する
-    analyzer = new p5.Amplitude();
-  
-    cnvs.mousePressed(p.play);
     reset();
-  };
+    p.background(0);
 
+    const yn = h / 8;
+    const xn = w / 8;
+    
+    for (let y = 0; y < yn; y++) {
+      for (let x = 0; x < xn; x++) {
+        const tx = (w / (xn - 1)) * x;
+        const ty = (h / (yn - 1)) * y;
+        
+        const dx = p.abs(tx - w / 2);
+        const dy = p.abs(ty - h / 2);
   
+        const r = p.map(dx, 0, w / 2, 0, 255);
+        const b = p.map(dy, 0, h / 2, 0, 255);
+        p.fill(r, 0, b);
+        p.circle(tx, ty, 10);
+      }
+    }
+    p.noLoop()
+
+  };
 
   p.draw = () => {
-    // update
-    p.background(0);
-    // p5.Amplitudeアナライザーからの音量測定値を得る
-    let level = analyzer.getLevel();
-
-    // levelを使って緑の矩形を描画する
-    let levelHeight = p.map(level, 0, 0.4, 0, h);
-    p.fill(100, 250, 100);
-    p.rect(0, h, w, -levelHeight);
-
+    // put drawing code here
+    
   };
-  
-  
-  p.play = () => {
-    noise.stop();
-    noise.start();
-    env.play(noise);
-  };
-
 
   p.windowResized = () => {
     cnvs = p.resizeCanvas(p.windowWidth, p.windowHeight);
@@ -64,11 +48,6 @@ const sketch = (p) => {
   };
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  const myp5 = new p5(sketch, 'p5Canvas');
-  document
-    .querySelector('#p5Canvas')
-    .addEventListener('touchmove', (e) => e.preventDefault(), {
-      passive: false,
-    });
-});
+const myp5 = new p5(sketch, 'p5Canvas');
+
+
