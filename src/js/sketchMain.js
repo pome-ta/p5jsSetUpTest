@@ -4,61 +4,59 @@ import './modules/p5Sound.bundle.js';
 const sketch = (p) => {
   let cnvs, w, h;
   let t;
-  let osc;
-  let isPlaying = false;
-
-  p.setup = () => {
-    // put setup code here
-
-    t = 0;
-    cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
-    osc = new p5.Oscillator('sine');
-    osc.freq(1000)
-    cnvs.mousePressed(p.play);
-    //console.log(p);
-
-    reset();
-  };
-
+  let noise, env, analyzer;
+  
   const reset = () => {
     w = p.width;
     h = p.height;
-    p.background(0);
-    p.colorMode(p.HSB);
-
-    const yn = h / 16;
-    const xn = w / 16;
-    const maxDist = p.dist(0, 0, w / 2, h / 2);
-
-    for (let y = 0; y < yn; y++) {
-      for (let x = 0; x < xn; x++) {
-        const tx = (w / (xn - 1)) * x;
-        const ty = (h / (yn - 1)) * y;
-
-        const d = p.dist(tx, ty, w / 2, h / 2);
-        const hue = p.map(d, 0, maxDist, 0, 360);
-
-        p.fill(hue, 255, 255);
-        p.circle(tx, ty, 10);
-      }
-    }
     // p.noLoop();
   };
 
-  p.draw = () => {
-    let ram = p.random(400);
-    console.log(ram)
-    if (isPlaying) osc.freq(ram, 1)
-    // put drawing code here
-    t++;
-    //const sinVal = p.sin(t);
-    //osc.freq(osc.freq + sinVal * 10);
+  p.setup = () => {
+    // put setup code here
+    t = 0;
+    cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
+    p.background(0);
+    
+    
+    noise = new p5.Noise();
+    // 振幅エンベロープを作成
+    env = new p5.Envelope();
+    // attackTime, decayTime, sustainRatio, releaseTimeを設定
+    env.setADSR(0.001, 0.1, 0.2, 0.1);
+    // attackLevel, releaseLevelを設定
+    env.setRange(1, 0);
+
+    // p5.Amplitudeは、setInput()メソッドで入力を指定しない場合、
+    // スケッチのすべてのサウンドを分析する
+    analyzer = new p5.Amplitude();
+  
+    cnvs.mousePressed(p.play);
+    reset();
   };
 
-  p.play = () => {
-    isPlaying = true
-    osc.start();
+  
+
+  p.draw = () => {
+    // update
+    p.background(0);
+    // p5.Amplitudeアナライザーからの音量測定値を得る
+    let level = analyzer.getLevel();
+
+    // levelを使って緑の矩形を描画する
+    let levelHeight = p.map(level, 0, 0.4, 0, h);
+    p.fill(100, 250, 100);
+    p.rect(0, h, w, -levelHeight);
+
   };
+  
+  
+  p.play = () => {
+    noise.stop();
+    noise.start();
+    env.play(noise);
+  };
+
 
   p.windowResized = () => {
     cnvs = p.resizeCanvas(p.windowWidth, p.windowHeight);
