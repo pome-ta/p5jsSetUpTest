@@ -1,9 +1,3 @@
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-var p5_sound$1 = {};
-
 /** [p5.sound]  Version: 1.0.1 - 2021-05-25 */
 
 (function () {
@@ -1209,7 +1203,7 @@ var p5_sound$1 = {};
 
 	function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+	function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 	var panner_ac = main.audiocontext;
@@ -1339,7 +1333,7 @@ var p5_sound$1 = {};
 
 	function soundfile_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function soundfile_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundfile_defineProperties(Constructor.prototype, protoProps); if (staticProps) soundfile_defineProperties(Constructor, staticProps); return Constructor; }
+	function soundfile_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundfile_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function soundfile_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3008,7 +3002,7 @@ var p5_sound$1 = {};
 
 	function amplitude_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function amplitude_createClass(Constructor, protoProps, staticProps) { if (protoProps) amplitude_defineProperties(Constructor.prototype, protoProps); if (staticProps) amplitude_defineProperties(Constructor, staticProps); return Constructor; }
+	function amplitude_createClass(Constructor, protoProps, staticProps) { if (protoProps) amplitude_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -3335,7 +3329,7 @@ var p5_sound$1 = {};
 
 	function fft_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function fft_createClass(Constructor, protoProps, staticProps) { if (protoProps) fft_defineProperties(Constructor.prototype, protoProps); if (staticProps) fft_defineProperties(Constructor, staticProps); return Constructor; }
+	function fft_createClass(Constructor, protoProps, staticProps) { if (protoProps) fft_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 	/**
@@ -4014,7 +4008,7 @@ var p5_sound$1 = {};
 
 	function oscillator_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function oscillator_createClass(Constructor, protoProps, staticProps) { if (protoProps) oscillator_defineProperties(Constructor.prototype, protoProps); if (staticProps) oscillator_defineProperties(Constructor, staticProps); return Constructor; }
+	function oscillator_createClass(Constructor, protoProps, staticProps) { if (protoProps) oscillator_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -5543,7 +5537,7 @@ var p5_sound$1 = {};
 
 	function noise_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function noise_createClass(Constructor, protoProps, staticProps) { if (protoProps) noise_defineProperties(Constructor.prototype, protoProps); if (staticProps) noise_defineProperties(Constructor, staticProps); return Constructor; }
+	function noise_createClass(Constructor, protoProps, staticProps) { if (protoProps) noise_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function noise_possibleConstructorReturn(self, call) { if (call && (noise_typeof(call) === "object" || typeof call === "function")) { return call; } return noise_assertThisInitialized(self); }
 
@@ -5754,7 +5748,7 @@ var p5_sound$1 = {};
 
 	function pulse_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function pulse_createClass(Constructor, protoProps, staticProps) { if (protoProps) pulse_defineProperties(Constructor.prototype, protoProps); if (staticProps) pulse_defineProperties(Constructor, staticProps); return Constructor; }
+	function pulse_createClass(Constructor, protoProps, staticProps) { if (protoProps) pulse_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function pulse_possibleConstructorReturn(self, call) { if (call && (pulse_typeof(call) === "object" || typeof call === "function")) { return call; } return pulse_assertThisInitialized(self); }
 
@@ -6001,7 +5995,7 @@ var p5_sound$1 = {};
 
 	function audioin_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function audioin_createClass(Constructor, protoProps, staticProps) { if (protoProps) audioin_defineProperties(Constructor.prototype, protoProps); if (staticProps) audioin_defineProperties(Constructor, staticProps); return Constructor; }
+	function audioin_createClass(Constructor, protoProps, staticProps) { if (protoProps) audioin_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -6410,7 +6404,7 @@ var p5_sound$1 = {};
 
 	function effect_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function effect_createClass(Constructor, protoProps, staticProps) { if (protoProps) effect_defineProperties(Constructor.prototype, protoProps); if (staticProps) effect_defineProperties(Constructor, staticProps); return Constructor; }
+	function effect_createClass(Constructor, protoProps, staticProps) { if (protoProps) effect_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -6602,7 +6596,7 @@ var p5_sound$1 = {};
 
 	function filter_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function filter_createClass(Constructor, protoProps, staticProps) { if (protoProps) filter_defineProperties(Constructor.prototype, protoProps); if (staticProps) filter_defineProperties(Constructor, staticProps); return Constructor; }
+	function filter_createClass(Constructor, protoProps, staticProps) { if (protoProps) filter_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function filter_possibleConstructorReturn(self, call) { if (call && (filter_typeof(call) === "object" || typeof call === "function")) { return call; } return filter_assertThisInitialized(self); }
 
@@ -6986,7 +6980,7 @@ var p5_sound$1 = {};
 
 	function eqFilter_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function eqFilter_createClass(Constructor, protoProps, staticProps) { if (protoProps) eqFilter_defineProperties(Constructor.prototype, protoProps); if (staticProps) eqFilter_defineProperties(Constructor, staticProps); return Constructor; }
+	function eqFilter_createClass(Constructor, protoProps, staticProps) { if (protoProps) eqFilter_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function eqFilter_possibleConstructorReturn(self, call) { if (call && (eqFilter_typeof(call) === "object" || typeof call === "function")) { return call; } return eqFilter_assertThisInitialized(self); }
 
@@ -7078,7 +7072,7 @@ var p5_sound$1 = {};
 
 	function eq_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function eq_createClass(Constructor, protoProps, staticProps) { if (protoProps) eq_defineProperties(Constructor.prototype, protoProps); if (staticProps) eq_defineProperties(Constructor, staticProps); return Constructor; }
+	function eq_createClass(Constructor, protoProps, staticProps) { if (protoProps) eq_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function eq_possibleConstructorReturn(self, call) { if (call && (eq_typeof(call) === "object" || typeof call === "function")) { return call; } return eq_assertThisInitialized(self); }
 
@@ -7318,7 +7312,7 @@ var p5_sound$1 = {};
 
 	function listener3d_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function listener3d_createClass(Constructor, protoProps, staticProps) { if (protoProps) listener3d_defineProperties(Constructor.prototype, protoProps); if (staticProps) listener3d_defineProperties(Constructor, staticProps); return Constructor; }
+	function listener3d_createClass(Constructor, protoProps, staticProps) { if (protoProps) listener3d_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	//   * listener is a class that can construct both a Spatial Panner
 	//   * and a Spatial Listener. The panner is based on the
@@ -7576,7 +7570,7 @@ var p5_sound$1 = {};
 
 	function panner3d_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function panner3d_createClass(Constructor, protoProps, staticProps) { if (protoProps) panner3d_defineProperties(Constructor.prototype, protoProps); if (staticProps) panner3d_defineProperties(Constructor, staticProps); return Constructor; }
+	function panner3d_createClass(Constructor, protoProps, staticProps) { if (protoProps) panner3d_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function panner3d_possibleConstructorReturn(self, call) { if (call && (panner3d_typeof(call) === "object" || typeof call === "function")) { return call; } return panner3d_assertThisInitialized(self); }
 
@@ -7899,7 +7893,7 @@ var p5_sound$1 = {};
 
 	function delay_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function delay_createClass(Constructor, protoProps, staticProps) { if (protoProps) delay_defineProperties(Constructor.prototype, protoProps); if (staticProps) delay_defineProperties(Constructor, staticProps); return Constructor; }
+	function delay_createClass(Constructor, protoProps, staticProps) { if (protoProps) delay_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function delay_possibleConstructorReturn(self, call) { if (call && (delay_typeof(call) === "object" || typeof call === "function")) { return call; } return delay_assertThisInitialized(self); }
 
@@ -8280,7 +8274,7 @@ var p5_sound$1 = {};
 
 	function reverb_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function reverb_createClass(Constructor, protoProps, staticProps) { if (protoProps) reverb_defineProperties(Constructor.prototype, protoProps); if (staticProps) reverb_defineProperties(Constructor, staticProps); return Constructor; }
+	function reverb_createClass(Constructor, protoProps, staticProps) { if (protoProps) reverb_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function reverb_possibleConstructorReturn(self, call) { if (call && (reverb_typeof(call) === "object" || typeof call === "function")) { return call; } return reverb_assertThisInitialized(self); }
 
@@ -8954,7 +8948,7 @@ var p5_sound$1 = {};
 
 	function metro_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function metro_createClass(Constructor, protoProps, staticProps) { if (protoProps) metro_defineProperties(Constructor.prototype, protoProps); if (staticProps) metro_defineProperties(Constructor, staticProps); return Constructor; }
+	function metro_createClass(Constructor, protoProps, staticProps) { if (protoProps) metro_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -9068,7 +9062,7 @@ var p5_sound$1 = {};
 	 var metro = (metro_Metro);
 	function looper_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function looper_createClass(Constructor, protoProps, staticProps) { if (protoProps) looper_defineProperties(Constructor.prototype, protoProps); if (staticProps) looper_defineProperties(Constructor, staticProps); return Constructor; }
+	function looper_createClass(Constructor, protoProps, staticProps) { if (protoProps) looper_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function looper_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9659,7 +9653,7 @@ var p5_sound$1 = {};
 
 	function soundLoop_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function soundLoop_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundLoop_defineProperties(Constructor.prototype, protoProps); if (staticProps) soundLoop_defineProperties(Constructor, staticProps); return Constructor; }
+	function soundLoop_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundLoop_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -10009,7 +10003,7 @@ var p5_sound$1 = {};
 
 	function compressor_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function compressor_createClass(Constructor, protoProps, staticProps) { if (protoProps) compressor_defineProperties(Constructor.prototype, protoProps); if (staticProps) compressor_defineProperties(Constructor, staticProps); return Constructor; }
+	function compressor_createClass(Constructor, protoProps, staticProps) { if (protoProps) compressor_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function compressor_possibleConstructorReturn(self, call) { if (call && (compressor_typeof(call) === "object" || typeof call === "function")) { return call; } return compressor_assertThisInitialized(self); }
 
@@ -10300,7 +10294,7 @@ var p5_sound$1 = {};
 
 	function peakDetect_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function peakDetect_createClass(Constructor, protoProps, staticProps) { if (protoProps) peakDetect_defineProperties(Constructor.prototype, protoProps); if (staticProps) peakDetect_defineProperties(Constructor, staticProps); return Constructor; }
+	function peakDetect_createClass(Constructor, protoProps, staticProps) { if (protoProps) peakDetect_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	/**
 	 *  <p>PeakDetect works in conjunction with p5.FFT to
@@ -10543,7 +10537,7 @@ var p5_sound$1 = {};
 
 	function soundRecorder_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function soundRecorder_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundRecorder_defineProperties(Constructor.prototype, protoProps); if (staticProps) soundRecorder_defineProperties(Constructor, staticProps); return Constructor; }
+	function soundRecorder_createClass(Constructor, protoProps, staticProps) { if (protoProps) soundRecorder_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -10773,7 +10767,7 @@ var p5_sound$1 = {};
 
 	function distortion_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function distortion_createClass(Constructor, protoProps, staticProps) { if (protoProps) distortion_defineProperties(Constructor.prototype, protoProps); if (staticProps) distortion_defineProperties(Constructor, staticProps); return Constructor; }
+	function distortion_createClass(Constructor, protoProps, staticProps) { if (protoProps) distortion_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function distortion_possibleConstructorReturn(self, call) { if (call && (distortion_typeof(call) === "object" || typeof call === "function")) { return call; } return distortion_assertThisInitialized(self); }
 
@@ -10960,7 +10954,7 @@ var p5_sound$1 = {};
 
 	function gain_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function gain_createClass(Constructor, protoProps, staticProps) { if (protoProps) gain_defineProperties(Constructor.prototype, protoProps); if (staticProps) gain_defineProperties(Constructor, staticProps); return Constructor; }
+	function gain_createClass(Constructor, protoProps, staticProps) { if (protoProps) gain_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 	/**
@@ -11136,7 +11130,7 @@ var p5_sound$1 = {};
 
 	function audioVoice_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function audioVoice_createClass(Constructor, protoProps, staticProps) { if (protoProps) audioVoice_defineProperties(Constructor.prototype, protoProps); if (staticProps) audioVoice_defineProperties(Constructor, staticProps); return Constructor; }
+	function audioVoice_createClass(Constructor, protoProps, staticProps) { if (protoProps) audioVoice_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 	/**
@@ -11215,7 +11209,7 @@ var p5_sound$1 = {};
 
 	function monosynth_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function monosynth_createClass(Constructor, protoProps, staticProps) { if (protoProps) monosynth_defineProperties(Constructor.prototype, protoProps); if (staticProps) monosynth_defineProperties(Constructor, staticProps); return Constructor; }
+	function monosynth_createClass(Constructor, protoProps, staticProps) { if (protoProps) monosynth_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	function monosynth_possibleConstructorReturn(self, call) { if (call && (monosynth_typeof(call) === "object" || typeof call === "function")) { return call; } return monosynth_assertThisInitialized(self); }
 
@@ -11612,7 +11606,7 @@ var p5_sound$1 = {};
 
 	function onsetDetect_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function onsetDetect_createClass(Constructor, protoProps, staticProps) { if (protoProps) onsetDetect_defineProperties(Constructor.prototype, protoProps); if (staticProps) onsetDetect_defineProperties(Constructor, staticProps); return Constructor; }
+	function onsetDetect_createClass(Constructor, protoProps, staticProps) { if (protoProps) onsetDetect_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 	/**
 	 *  Listen for onsets (a sharp increase in volume) within a given
@@ -11676,7 +11670,7 @@ var p5_sound$1 = {};
 
 	function polysynth_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-	function polysynth_createClass(Constructor, protoProps, staticProps) { if (protoProps) polysynth_defineProperties(Constructor.prototype, protoProps); if (staticProps) polysynth_defineProperties(Constructor, staticProps); return Constructor; }
+	function polysynth_createClass(Constructor, protoProps, staticProps) { if (protoProps) polysynth_defineProperties(Constructor.prototype, protoProps); return Constructor; }
 
 
 
@@ -12260,7 +12254,3 @@ var p5_sound$1 = {};
 	 })
 	 ]); 
 } ());
-
-var p5_sound = /*@__PURE__*/getDefaultExportFromCjs(p5_sound$1);
-
-export { p5_sound as default };
