@@ -106,6 +106,7 @@ class WebViewController:
 
     def viewDidDisappear_(_self, _cmd, _animated):
       self.refresh_load()
+      
 
     def refreshWebView_(_self, _cmd, _sender):
       sender = ObjCInstance(_sender)
@@ -188,12 +189,23 @@ class NavigationController:
     def doneButtonTapped_(_self, _cmd, _sender):
       this = ObjCInstance(_self)
       visibleViewController = this.visibleViewController()
+
       visibleViewController.dismissViewControllerAnimated_completion_(
         True, None)
+
+    def refreshButtonTapped_(_self, _cmd, _sender):
+      this = ObjCInstance(_self)
+      visibleViewController = this.visibleViewController()
+      view = visibleViewController.view()
+      
+      view.reload()
+      #pdbg.state(view)
+      #visibleViewController.dismissViewControllerAnimated_completion_(True, None)
 
     # --- `UINavigationController` set up
     _methods = [
       doneButtonTapped_,
+      refreshButtonTapped_,
     ]
 
     create_kwargs = {
@@ -230,11 +242,17 @@ class NavigationController:
       ).initWithBarButtonSystemItem_target_action_(0, navigationController,
                                                    sel('doneButtonTapped:'))
 
+      refresh_btn = UIBarButtonItem.alloc(
+      ).initWithBarButtonSystemItem_target_action_(13, navigationController,
+                                                   sel('refreshButtonTapped:'))
+
       visibleViewController = navigationController.visibleViewController()
 
       # --- navigationItem
       navigationItem = visibleViewController.navigationItem()
-      navigationItem.rightBarButtonItem = done_btn
+
+      navigationItem.leftBarButtonItem = done_btn
+      navigationItem.rightBarButtonItem = refresh_btn
 
     # --- `UINavigationControllerDelegate` set up
     _methods = [
@@ -285,3 +303,4 @@ if __name__ == '__main__':
   m_vc = WebViewController.load_url(uri_path)
   n_vc = NavigationController.new(m_vc)
   present_objc(n_vc)
+
