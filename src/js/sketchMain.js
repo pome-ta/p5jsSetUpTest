@@ -8,7 +8,7 @@ const sketch = (p) => {
   let isPlaying = false;
 
   const windowSizeUpDate = () => {
-  cnvs = p.createCanvas(p.windowWidth/2, p.windowHeight/2);
+  cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight*0.92);
   
   }
   p.setup = () => {
@@ -72,11 +72,13 @@ const sketch = (p) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const myp5 = new p5(sketch, 'p5Canvas');
+  /*
   document
     .querySelector('#p5Canvas')
     .addEventListener('touchmove', (e) => e.preventDefault(), {
       passive: false,
     });
+    */
 });
 
 
