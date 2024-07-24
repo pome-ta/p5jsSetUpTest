@@ -7,11 +7,16 @@ const sketch = (p) => {
   let osc;
   let isPlaying = false;
 
+  const windowSizeUpDate = () => {
+  cnvs = p.createCanvas(p.windowWidth/2, p.windowHeight/2);
+  
+  }
   p.setup = () => {
     // put setup code here
+    windowSizeUpDate()
     
     t = 0;
-    cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
+    
     osc = new p5.Oscillator('sine');
     osc.freq(1000);
     isPlaying = true;
@@ -48,7 +53,6 @@ const sketch = (p) => {
   };
 
   p.draw = () => {
-  if(isPlaying) osc.freq(p.random(400), 1)
     // put drawing code here
     t++;
     //const sinVal = p.sin(t);
@@ -61,7 +65,7 @@ const sketch = (p) => {
   };
 
   p.windowResized = () => {
-    cnvs = p.resizeCanvas(p.windowWidth, p.windowHeight);
+    windowSizeUpDate();
     reset();
   };
 };

@@ -6,6 +6,6 @@ body {
   margin: auto;
 }
 
-.p5Canvas {
+#p5Canvas {
   display: block;
 }
