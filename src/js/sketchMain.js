@@ -18,11 +18,11 @@ const sketch = (p) => {
     t = 0;
     
     osc = new p5.Oscillator('sine');
-    osc.freq(1000);
+    osc.freq(440);
     isPlaying = true;
     osc.start();
     cnvs.mousePressed(p.play);
-    //console.log(p);
+    
     
     reset();
   };
@@ -54,6 +54,7 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
+    //console.log(p.millis());
     t++;
     //const sinVal = p.sin(t);
     //osc.freq(osc.freq + sinVal * 10);
@@ -61,7 +62,8 @@ const sketch = (p) => {
 
   p.play = () => {
     isPlaying = true
-    osc.start();
+    //osc.start();
+    p.userStartAudio()
   };
 
   p.windowResized = () => {
