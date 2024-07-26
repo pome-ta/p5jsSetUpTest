@@ -3,30 +3,18 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let beat = 0.0;
-  let BPM;
-  let osc,envelope, fft;
+  let osc, fft;
   
   p.setup = () => {
     // put setup code here
     windowSizeUpDate();
     reset();
-    BPM = 120;
-    beat = 0.0;
     
     osc = new p5.Oscillator('sine');
-    //osc.freq(440);
-    //osc.amp(0.1);
-    //osc.start();
-    
-    envelope = new p5.Envelope();
-    // attackTime, decayTime, sustainRatio, releaseTimeを設定
-    envelope.setADSR(0.001, 0.5, 0.1, 0.5);
-    // attackLevel, releaseLevelを設定
-    envelope.setRange(1, 0);
-    // FFTを作成
-    
-    cnvs?.mousePressed(p.userStartAudio);
+    osc.freq(440);
+    osc.amp(0.1);
+    osc.start();
+    cnvs?.mousePressed(p.play);
     
     fft = new p5.FFT();
     
@@ -35,9 +23,6 @@ const sketch = (p) => {
   
   p.draw = () => {
     // put drawing code here
-    
-    beat = timeToBeat(p.millis() / 1000);
-    console.log(beat % 4)
     p.background(220);
     
     const spectrum = fft.analyze();
@@ -58,12 +43,14 @@ const sketch = (p) => {
       p.vertex(x,y);
     });
     p.endShape();
+    
+    
   };
 
   p.play = () => {
     // todo: 発信してるか確認
     p.userStartAudio()
-    //osc.freq(p.random(8800), 1);
+    osc.freq(p.random(8800), 1);
   };
 
   p.windowResized = () => {
@@ -71,17 +58,17 @@ const sketch = (p) => {
     reset();
   };
 
-  const timeToBeat = (t) => t  / 60 * BPM;
-  
-  
   const windowSizeUpDate = () => {
   cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
   //console.log(cnvs)
+  
   }
 
   const reset = () => {
     w = p.width;
     h = p.height;
+    
+    
     //p.noLoop();
   };
 
@@ -101,5 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //console.log(canvasTag)
   
 });
+
 
 
