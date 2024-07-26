@@ -35,7 +35,9 @@ const sketch = (p) => {
 
     fft = new p5.FFT();
 
-    console.log(p.millis())
+    //console.log(p.millis())
+    p.frameRate(30)
+    console.log(`frameRate: ${p.frameRate()}`);
   };
 
   p.draw = () => {
@@ -43,7 +45,7 @@ const sketch = (p) => {
     timeCount += p.frameRate();
 
     // console.log(`millis: ${p.millis()}`);
-    // console.log(`frameRate: ${p.frameRate()}`);
+    console.log(`frameRate: ${p.frameRate()}`);
     // console.log(`timeCount: ${timeCount / 60}`)
 
     beat = timeToBeat(p.millis() / 1000);
