@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false, });
   //myp5.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false, });
   
+  
   //console.log(canvasTag)
   
 });
