@@ -36,7 +36,7 @@ const sketch = (p) => {
     fft = new p5.FFT();
 
     //console.log(p.millis())
-    p.frameRate(30)
+    p.frameRate(5)
     console.log(`frameRate: ${p.frameRate()}`);
   };
 
