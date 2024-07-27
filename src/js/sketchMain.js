@@ -29,7 +29,7 @@ const sketch = (p) => {
     is_play = false;
 
     osc = new p5.Oscillator('sine');
-    //osc.freq(440);
+    osc.freq(440);
     //osc.amp(0.1);
     //osc.start();
 
@@ -42,6 +42,7 @@ const sketch = (p) => {
 
     cnvs?.mousePressed(p.userStartAudio);
     cnvs?.mousePressed(p.play);
+    envelope.play(osc);
 
     fft = new p5.FFT();
     // p.frameRate(16);
@@ -61,6 +62,9 @@ const sketch = (p) => {
       // console.log(nowBeat)
       if (nowBeat < 1) {
         // p.background('#ff00ff');
+        osc.freq(440);
+        
+        //envelope.play(osc);
         p.stroke('#ff00ff');
       } else {
         // p.background(255 - 220);
