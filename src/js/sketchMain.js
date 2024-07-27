@@ -3,21 +3,30 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let timeCount;
-  let preTime, nowTime;
-  let beat = 0.0;
+  let nowTime, pastTime, diffTime;
+  let nowBeat, pastBeat;
+  let stockBeat;
+  let is_play;
+
   let BPM;
   let osc, envelope, fft;
 
   p.setup = () => {
-    console.log(p.millis())
-
     // put setup code here
     windowSizeUpDate();
     reset();
     BPM = 120;
-    timeCount = 0.0;
-    beat = 0.0;
+
+    nowTime = 0.0;
+    pastTime = 0.0;
+    diffTime = 0.0;
+
+    nowBeat = 0;
+    pastBeat = -1;
+
+    stockBeat = 0.0;
+
+    is_play = false;
 
     osc = new p5.Oscillator('sine');
     //osc.freq(440);
@@ -32,25 +41,37 @@ const sketch = (p) => {
     // FFTを作成
 
     cnvs?.mousePressed(p.userStartAudio);
+    cnvs?.mousePressed(p.play);
 
     fft = new p5.FFT();
-
-    //console.log(p.millis())
-    p.frameRate(5)
-    console.log(`frameRate: ${p.frameRate()}`);
+    // p.frameRate(16);
+    // p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
-    timeCount += p.frameRate();
+    nowTime = p.millis();
+    diffTime = nowTime - pastTime;
+    stockBeat += timeToBeat(diffTime);
+    pastTime = nowTime;
 
-    // console.log(`millis: ${p.millis()}`);
-    console.log(`frameRate: ${p.frameRate()}`);
-    // console.log(`timeCount: ${timeCount / 60}`)
+    nowBeat = Math.trunc(stockBeat % 4);
 
-    beat = timeToBeat(p.millis() / 1000);
-    // console.log(beat % 4);
-    p.background(220);
+    if (nowBeat !== pastBeat) {
+      // console.log(nowBeat)
+      if (nowBeat < 1) {
+        // p.background('#ff00ff');
+        p.stroke('#ff00ff');
+      } else {
+        // p.background(255 - 220);
+        p.stroke(255 - 20);
+      }
+      pastBeat = nowBeat;
+    } else {
+      // p.background(220);
+      p.stroke(20);
+    }
+      p.background(220);
 
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
@@ -62,7 +83,7 @@ const sketch = (p) => {
     const waveform = fft.waveform();
     p.noFill();
     p.beginShape();
-    p.stroke(20);
+    // p.stroke(20);
     waveform.forEach((v, i) => {
       const x = p.map(i, 0, waveform.length, 0, w);
       const y = p.map(v, -1, 1, 0, h);
@@ -72,9 +93,15 @@ const sketch = (p) => {
   };
 
   p.play = () => {
-    // todo: 発信してるか確認
-    p.userStartAudio();
-    //osc.freq(p.random(8800), 1);
+    is_play = !is_play;
+    console.log(`play: ${is_play}`);
+    if (is_play) {
+    } else {
+      nowTime = 0.0;
+      pastTime = 0.0;
+      diffTime = 0.0;
+      stockBeat = 0.0;
+    }
   };
 
   p.windowResized = () => {
@@ -82,7 +109,7 @@ const sketch = (p) => {
     reset();
   };
 
-  const timeToBeat = (t) => (t / 60) * BPM;
+  const timeToBeat = (t) => (t / 1000 / 60) * BPM;
 
   const windowSizeUpDate = () => {
     cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
