@@ -11,11 +11,16 @@ const sketch = (p) => {
   let BPM;
   let osc, envelope, fft;
 
+  let tSize;
+
+  const signals = [...Array(4).keys()];
+  let wrapSignalSize;
+
   p.setup = () => {
     // put setup code here
     windowSizeUpDate();
     reset();
-    BPM = 120;
+    BPM = 90;
 
     nowTime = 0.0;
     pastTime = 0.0;
@@ -30,12 +35,11 @@ const sketch = (p) => {
 
     osc = new p5.Oscillator('sine');
     osc.freq(440);
-    //osc.amp(0.1);
-    //osc.start();
+    osc.amp(0.0);
 
     envelope = new p5.Envelope();
     // attackTime, decayTime, sustainRatio, releaseTimeを設定
-    envelope.setADSR(0.001, 0.5, 0.1, 0.5);
+    envelope.setADSR(0.001, 0.1, 0.0, 0.1);
     // attackLevel, releaseLevelを設定
     envelope.setRange(1, 0);
     // FFTを作成
@@ -45,49 +49,61 @@ const sketch = (p) => {
     envelope.play(osc);
 
     fft = new p5.FFT();
-    // p.frameRate(16);
     // p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
     nowTime = p.millis();
-    diffTime = nowTime - pastTime;
+    diffTime = pastTime === 0.0 ? 0.0 : nowTime - pastTime;
     stockBeat += timeToBeat(diffTime);
     pastTime = nowTime;
 
     nowBeat = Math.trunc(stockBeat % 4);
 
     if (nowBeat !== pastBeat) {
-      // console.log(nowBeat)
       if (nowBeat < 1) {
-        // p.background('#ff00ff');
-        osc.freq(440);
-        
-        //envelope.play(osc);
-        p.stroke('#ff00ff');
+        osc.freq(880);
+        envelope.play(osc);
       } else {
-        // p.background(255 - 220);
-        p.stroke(255 - 20);
+        osc.freq(440);
+        envelope.play(osc);
       }
       pastBeat = nowBeat;
     } else {
-      // p.background(220);
-      p.stroke(20);
     }
-      p.background(220);
+    p.background(220);
+
+    p.textSize(tSize * 0.64);
+    p.textFont('monospace');
+    p.textAlign(p.CENTER, p.BOTTOM);
+    p.text(`${BPM} BPM`, w / 2, h / 2 - tSize * 0.24);
+
+    p.fill(220);
+
+    signals.forEach((i) => {
+      if (is_play) {
+        if (i === nowBeat) {
+          p.fill(16);
+        } else {
+          p.fill(220);
+        }
+      }
+      p.circle(wrapSignalSize + tSize * i, h / 2 + tSize * 0.64, tSize * 0.5);
+    });
 
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
       const x = p.map(i, 0, spectrum.length, 0, w);
       const y = -h + p.map(v, 0, 255, h, 0);
-      p.rect(x, h, w / spectrum.length, y);
+      // p.rect(x, h, w / spectrum.length, y);
+      p.rect(x * 16, h, w / spectrum.length, y);
     });
 
     const waveform = fft.waveform();
     p.noFill();
     p.beginShape();
-    // p.stroke(20);
+    p.stroke(16);
     waveform.forEach((v, i) => {
       const x = p.map(i, 0, waveform.length, 0, w);
       const y = p.map(v, -1, 1, 0, h);
@@ -97,14 +113,17 @@ const sketch = (p) => {
   };
 
   p.play = () => {
+    // p.userStartAudio();
     is_play = !is_play;
     console.log(`play: ${is_play}`);
     if (is_play) {
-    } else {
-      nowTime = 0.0;
       pastTime = 0.0;
       diffTime = 0.0;
       stockBeat = 0.0;
+      pastBeat = -1;
+      osc.start();
+    } else {
+      osc.stop();
     }
   };
 
@@ -115,15 +134,17 @@ const sketch = (p) => {
 
   const timeToBeat = (t) => (t / 1000 / 60) * BPM;
 
+  const metronom = () => {};
+
   const windowSizeUpDate = () => {
     cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
-    //console.log(cnvs)
   };
 
   const reset = () => {
     w = p.width;
     h = p.height;
-    //p.noLoop();
+    tSize = Math.min(w, h) / 8;
+    wrapSignalSize = (w - tSize * signals.length) / 2 + tSize / 2;
   };
 };
 
