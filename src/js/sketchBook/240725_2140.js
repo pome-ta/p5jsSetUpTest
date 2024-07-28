@@ -7,32 +7,30 @@ const sketch = (p) => {
   let osc;
   let isPlaying = false;
 
-  
   p.setup = () => {
     // put setup code here
-    windowSizeUpDate()
-    
+    windowSizeUpDate();
+
     t = 0;
-    
+
     osc = new p5.Oscillator('sine');
     osc.freq(440);
     isPlaying = true;
     osc.start();
     cnvs.mousePressed(p.play);
-    
-    
+
     reset();
   };
-  
+
   p.draw = () => {
     // put drawing code here
     let spectrum = p5.fft.analyze();
   };
 
   p.play = () => {
-    isPlaying = true
+    isPlaying = true;
     //osc.start();
-    p.userStartAudio()
+    p.userStartAudio();
   };
 
   p.windowResized = () => {
@@ -41,10 +39,8 @@ const sketch = (p) => {
   };
 
   const windowSizeUpDate = () => {
-  cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight*0.92);
-  
-  }
-
+    cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
+  };
 
   const reset = () => {
     w = p.width;
@@ -70,8 +66,6 @@ const sketch = (p) => {
     }
     //p.noLoop();
   };
-
-
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,6 +78,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     */
 });
-
-
-

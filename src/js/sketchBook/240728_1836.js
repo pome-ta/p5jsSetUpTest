@@ -4,28 +4,25 @@ import './modules/p5Sound.bundle.js';
 const sketch = (p) => {
   let cnvs, w, h;
   let fft;
-  
+
   let noise, env, analyzer;
-  
-  
+
   p.setup = () => {
     // put setup code here
-    sizeReset()
+    sizeReset();
     p.background(220);
-    
+
     noise = new p5.Noise();
     env = new p5.Envelope();
     env.setADSR(0.001, 0.7, 0.2, 0.5);
     env.setRange(1, 0);
-    
+
     //cnvs?.mousePressed(p.userStartAudio);
     cnvs?.mousePressed(togglePlay);
     //console.log(p)
-    
-    console.log(document)
 
-    
-    
+    console.log(document);
+
     fft = new p5.FFT();
     //p.noLoop();
   };
@@ -36,18 +33,17 @@ const sketch = (p) => {
     soundVisualize();
   };
 
-
   p.windowResized = () => {
     sizeReset();
   };
-  
+
   const togglePlay = () => {
-  console.log('t')
+    console.log('t');
     noise.stop();
     noise.start();
     env.play(noise);
   };
-  
+
   const soundVisualize = () => {
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
@@ -75,13 +71,13 @@ const sketch = (p) => {
     h = p.windowHeight * sizeRatio;
     if (!cnvs) {
       cnvs = p.createCanvas(w, h);
-    } 
+    }
     p.resizeCanvas(w, h);
   };
 
   const sizeReset = () => {
-    windowSizeUpDate()
-  }
+    windowSizeUpDate();
+  };
 };
 
 //console.log(document.ontouchstart)
@@ -92,31 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-  
+
   // --- start
   const myp5 = new p5(sketch, canvasId);
-  
+
   //const eventName = typeof document.ontouchend !== 'undefined' ? 'touchend' : 'mouseup';
-  
-  const eventName = typeof document.ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
-  
-  
+
+  const eventName =
+    typeof document.ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
+
   //ontouchstart
   //touchstart
   //mousedown
-  
+
   function initAudioContext() {
-    console.log('in')
+    console.log('in');
     document.removeEventListener(eventName, initAudioContext);
     // todo: wake up AudioContext
     //myp5.userStartAudio();
     myp5.getAudioContext().resume();
   }
-  
+
   document.addEventListener(eventName, initAudioContext);
   //console.log(document)
-  
-  
-  
 });
-

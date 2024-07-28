@@ -5,7 +5,7 @@ const sketch = (p) => {
   let cnvs, w, h;
   let t;
   let noise, env, analyzer;
-  
+
   const reset = () => {
     w = p.width;
     h = p.height;
@@ -17,8 +17,7 @@ const sketch = (p) => {
     t = 0;
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     p.background(0);
-    
-    
+
     noise = new p5.Noise();
     // 振幅エンベロープを作成
     env = new p5.Envelope();
@@ -30,12 +29,10 @@ const sketch = (p) => {
     // p5.Amplitudeは、setInput()メソッドで入力を指定しない場合、
     // スケッチのすべてのサウンドを分析する
     analyzer = new p5.Amplitude();
-  
+
     cnvs.mousePressed(p.play);
     reset();
   };
-
-  
 
   p.draw = () => {
     // update
@@ -47,16 +44,13 @@ const sketch = (p) => {
     let levelHeight = p.map(level, 0, 0.4, 0, h);
     p.fill(100, 250, 100);
     p.rect(0, h, w, -levelHeight);
-
   };
-  
-  
+
   p.play = () => {
     noise.stop();
     noise.start();
     env.play(noise);
   };
-
 
   p.windowResized = () => {
     cnvs = p.resizeCanvas(p.windowWidth, p.windowHeight);
@@ -72,4 +66,3 @@ document.addEventListener('DOMContentLoaded', () => {
       passive: false,
     });
 });
-

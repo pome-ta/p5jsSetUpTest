@@ -46,7 +46,6 @@ const sketch = (p) => {
 
     cnvs?.mousePressed(p.userStartAudio);
     cnvs?.mousePressed(p.play);
-    
 
     fft = new p5.FFT();
     // p.noLoop();
@@ -161,4 +160,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //console.log(canvasTag)
 });
-

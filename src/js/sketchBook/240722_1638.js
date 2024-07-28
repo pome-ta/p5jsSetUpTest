@@ -8,12 +8,12 @@ const sketch = (p) => {
 
   p.setup = () => {
     // put setup code here
-    
+
     t = 0;
     cnvs = p.createCanvas(p.windowWidth, p.windowHeight);
     //osc = new p5.Oscillator('sine');
     //cnvs.mousePressed(p.play);
-    
+
     reset();
   };
 
@@ -39,6 +39,7 @@ const sketch = (p) => {
         p.circle(tx, ty, 10);
       }
     }
+
     p.noLoop();
   };
 
@@ -67,4 +68,3 @@ document.addEventListener('DOMContentLoaded', () => {
       passive: false,
     });
 });
-

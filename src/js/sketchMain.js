@@ -5,10 +5,9 @@ const sketch = (p) => {
   let cnvs, w, h;
   let bgColor = 220;
   let fft;
-  
+
   let noise, env, analyzer;
-  
-  
+
   p.setup = () => {
     // put setup code here
     sizeReset();
@@ -17,21 +16,19 @@ const sketch = (p) => {
     // mimics the autoplay policy
     p.getAudioContext().suspend();
     p.background(bgColor);
-    
+
     noise = new p5.Noise();
     env = new p5.Envelope();
     env.setADSR(0.001, 0.7, 0.2, 0.5);
     env.setRange(1, 0);
-    
+
     //cnvs?.mousePressed(p.userStartAudio);
     cnvs?.mousePressed(togglePlay);
     //console.log(p)
-    
-    //console.log(p.getAudioContext())
-    console.log(p.getAudioContext())
 
-    
-    
+    //console.log(p.getAudioContext())
+    console.log(p.getAudioContext());
+
     fft = new p5.FFT();
     //p.noLoop();
   };
@@ -41,27 +38,25 @@ const sketch = (p) => {
     p.background(bgColor);
     soundVisualize();
   };
-  
-  p.touchStarted = () => {
-    console.log('t')
-    const isRunning = p.getAudioContext().state !== 'running';
-    
-    bgColor = isRunning ? bgColor : '#ff00ff';
-    
-  }
 
+  p.touchStarted = () => {
+    console.log('t');
+    const isRunning = p.getAudioContext().state !== 'running';
+
+    bgColor = isRunning ? bgColor : '#ff00ff';
+  };
 
   p.windowResized = () => {
     sizeReset();
   };
-  
+
   const togglePlay = () => {
-  console.log('t')
+    console.log('t');
     noise.stop();
     noise.start();
     env.play(noise);
   };
-  
+
   const soundVisualize = () => {
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
@@ -89,13 +84,13 @@ const sketch = (p) => {
     h = p.windowHeight * sizeRatio;
     if (!cnvs) {
       cnvs = p.createCanvas(w, h);
-    } 
+    }
     p.resizeCanvas(w, h);
   };
 
   const sizeReset = () => {
-    windowSizeUpDate()
-  }
+    windowSizeUpDate();
+  };
 };
 
 //console.log(document.ontouchstart)
@@ -108,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     passive: false,
   });
   */
-  
+
   // --- start
   const myp5 = new p5(sketch, canvasId);
   /*
@@ -133,8 +128,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener(eventName, initAudioContext);
   //console.log(document)
   */
-  
-  
-  
 });
-
