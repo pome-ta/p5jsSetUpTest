@@ -25,31 +25,54 @@ const sketch = (p) => {
     env.setRange(1, 0);
 
     //cnvs?.mousePressed(p.userStartAudio);
-    cnvs?.mousePressed(togglePlay);
+    //cnvs?.mousePressed(togglePlay);
     //console.log(p)
 
     //console.log(p.getAudioContext())
-    console.log(p.getAudioContext());
+    //console.log(p.getAudioContext());
 
     fft = new p5.FFT();
-    //p.noLoop();
+    p.touchStarted(assistDots)
+    
+    p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
     p.background(runningBgColor);
-    soundVisualize();
+    //soundVisualize();
   };
-
+/*
   p.touchStarted = () => {
-    const isRunning = p.getAudioContext().state !== 'running';
+    //const isRunning = p.getAudioContext().state !== 'running';
 
-    bgColor = isRunning ? runningBgColor : suspendBgColor;
+    //bgColor = isRunning ? runningBgColor : suspendBgColor;
+    
+    //p.background(suspendBgColor);
+    /*
+    for (let touch of p.touches) {
+    p.circle(touch.x, touch.y, 40);
+  }*/
+  /*
+    p.touches.forEach((touch) => {
+      console.log(touch.x)
+      p.circle(touch.x, touch.y, 40);
+    });
+  
   };
+  */
 
   p.windowResized = () => {
     sizeReset();
   };
+  
+  
+  const assistDots = () => {
+    p.touches.forEach((touch) => {
+      console.log(touch.x)
+      p.circle(touch.x, touch.y, 40);
+    });
+  }
 
   const togglePlay = () => {
     console.log('t');
@@ -99,11 +122,11 @@ const sketch = (p) => {
 document.addEventListener('DOMContentLoaded', () => {
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
-  /*
+  
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-  */
+  
 
   // --- start
   const myp5 = new p5(sketch, canvasId);
