@@ -3,6 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
+  let bgColor = 220;
   let fft;
   
   let noise, env, analyzer;
@@ -10,8 +11,12 @@ const sketch = (p) => {
   
   p.setup = () => {
     // put setup code here
-    sizeReset()
-    p.background(220);
+    sizeReset();
+    // ref: [userStartAudio](https://p5js.org/reference/p5/userStartAudio/)
+    // ref: [getAudioContext](https://p5js.org/reference/p5/getAudioContext/)
+    // mimics the autoplay policy
+    p.getAudioContext().suspend();
+    p.background(bgColor);
     
     noise = new p5.Noise();
     env = new p5.Envelope();
@@ -22,7 +27,8 @@ const sketch = (p) => {
     cnvs?.mousePressed(togglePlay);
     //console.log(p)
     
-    console.log(document)
+    //console.log(p.getAudioContext())
+    console.log(p.getAudioContext())
 
     
     
@@ -32,9 +38,17 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
-    p.background(220);
+    p.background(bgColor);
     soundVisualize();
   };
+  
+  p.touchStarted = () => {
+    console.log('t')
+    const isRunning = p.getAudioContext().state !== 'running';
+    
+    bgColor = isRunning ? bgColor : '#ff00ff';
+    
+  }
 
 
   p.windowResized = () => {
@@ -89,12 +103,15 @@ const sketch = (p) => {
 document.addEventListener('DOMContentLoaded', () => {
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
+  /*
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
+  */
   
   // --- start
   const myp5 = new p5(sketch, canvasId);
+  /*
   
   //const eventName = typeof document.ontouchend !== 'undefined' ? 'touchend' : 'mouseup';
   
@@ -115,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.addEventListener(eventName, initAudioContext);
   //console.log(document)
+  */
   
   
   
