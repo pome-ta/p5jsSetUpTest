@@ -3,7 +3,9 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let bgColor = 220;
+  let bgColor;
+  let suspendBgColor = '#ffff00';
+  let runningBgColor = 220;
   let fft;
 
   let noise, env, analyzer;
@@ -14,8 +16,8 @@ const sketch = (p) => {
     // ref: [userStartAudio](https://p5js.org/reference/p5/userStartAudio/)
     // ref: [getAudioContext](https://p5js.org/reference/p5/getAudioContext/)
     // mimics the autoplay policy
-    p.getAudioContext().suspend();
-    p.background(bgColor);
+    //p.getAudioContext().suspend();
+    p.background(suspendBgColor);
 
     noise = new p5.Noise();
     env = new p5.Envelope();
@@ -35,15 +37,14 @@ const sketch = (p) => {
 
   p.draw = () => {
     // put drawing code here
-    p.background(bgColor);
+    p.background(runningBgColor);
     soundVisualize();
   };
 
   p.touchStarted = () => {
-    console.log('t');
     const isRunning = p.getAudioContext().state !== 'running';
 
-    bgColor = isRunning ? bgColor : '#ff00ff';
+    bgColor = isRunning ? runningBgColor : suspendBgColor;
   };
 
   p.windowResized = () => {
