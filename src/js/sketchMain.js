@@ -30,6 +30,7 @@ const sketch = (p) => {
 
     //console.log(p.getAudioContext())
     //console.log(p.getAudioContext());
+    
 
     fft = new p5.FFT();
     p.touchStarted(assistDots)
