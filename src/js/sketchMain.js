@@ -43,7 +43,7 @@ const sketch = (p) => {
     p.background(runningBgColor);
     //soundVisualize();
   };
-/*
+
   p.touchStarted = () => {
     //const isRunning = p.getAudioContext().state !== 'running';
 
@@ -54,14 +54,14 @@ const sketch = (p) => {
     for (let touch of p.touches) {
     p.circle(touch.x, touch.y, 40);
   }*/
-  /*
+  
     p.touches.forEach((touch) => {
       console.log(touch.x)
       p.circle(touch.x, touch.y, 40);
     });
   
   };
-  */
+  
 
   p.windowResized = () => {
     sizeReset();
