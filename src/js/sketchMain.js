@@ -3,7 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  //const tc = p.createGraphics(100, 100);  // touchCanvas
+  let tc;  // touchCanvas
   let bgColor;
   let suspendBgColor = '#ffff00';
   let runningBgColor = 220;
@@ -18,7 +18,7 @@ const sketch = (p) => {
     // ref: [getAudioContext](https://p5js.org/reference/p5/getAudioContext/)
     // mimics the autoplay policy
     //p.getAudioContext().suspend();
-    p.background(suspendBgColor);
+    //p.background(suspendBgColor);
 
     noise = new p5.Noise();
     env = new p5.Envelope();
@@ -32,28 +32,22 @@ const sketch = (p) => {
     //console.log(p.getAudioContext())
     //console.log(p.getAudioContext());
     
-
     fft = new p5.FFT();
-    
-    
-    //p.noLoop();
+    p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
-    //p.background(runningBgColor);
+    //p.background(220);
     soundVisualize();
   };
-
-  
-  
 
   p.windowResized = () => {
     sizeReset();
   };
   
-  
-  const soundVisualize = () => {
+
+  function soundVisualize() {
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
       const x = p.map(i, 0, spectrum.length, 0, w);
@@ -72,21 +66,28 @@ const sketch = (p) => {
       p.vertex(x, y);
     });
     p.endShape();
-  };
+  }
+  
 
-  const windowSizeUpDate = () => {
+  function windowSizeUpDate() {
     const sizeRatio = 0.92;
     w = p.windowWidth * sizeRatio;
     h = p.windowHeight * sizeRatio;
     if (!cnvs) {
       cnvs = p.createCanvas(w, h);
     }
+    
+    tc = p.createGraphics(w, h);
     p.resizeCanvas(w, h);
-  };
-
-  const sizeReset = () => {
+    //tc.background('#ff00ff80')
+    p.image(tc, 0, 0);
+    console.log(tc)
+  }
+  
+  function sizeReset() {
     windowSizeUpDate();
-  };
+  }
+
 };
 
 //console.log(document.ontouchstart)
