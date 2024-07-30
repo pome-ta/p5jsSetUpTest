@@ -3,6 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
+  //const tc = p.createGraphics(100, 100);  // touchCanvas
   let bgColor;
   let suspendBgColor = '#ffff00';
   let runningBgColor = 220;
@@ -33,34 +34,18 @@ const sketch = (p) => {
     
 
     fft = new p5.FFT();
-    p.touchStarted(assistDots)
     
-    p.noLoop();
+    
+    //p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
-    p.background(runningBgColor);
-    //soundVisualize();
+    //p.background(runningBgColor);
+    soundVisualize();
   };
 
-  p.touchStarted = () => {
-    //const isRunning = p.getAudioContext().state !== 'running';
-
-    //bgColor = isRunning ? runningBgColor : suspendBgColor;
-    
-    //p.background(suspendBgColor);
-    /*
-    for (let touch of p.touches) {
-    p.circle(touch.x, touch.y, 40);
-  }*/
   
-    p.touches.forEach((touch) => {
-      console.log(touch.x)
-      p.circle(touch.x, touch.y, 40);
-    });
-  
-  };
   
 
   p.windowResized = () => {
@@ -68,20 +53,6 @@ const sketch = (p) => {
   };
   
   
-  const assistDots = () => {
-    p.touches.forEach((touch) => {
-      console.log(touch.x)
-      p.circle(touch.x, touch.y, 40);
-    });
-  }
-
-  const togglePlay = () => {
-    console.log('t');
-    noise.stop();
-    noise.start();
-    env.play(noise);
-  };
-
   const soundVisualize = () => {
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
