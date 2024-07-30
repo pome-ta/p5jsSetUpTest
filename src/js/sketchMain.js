@@ -19,32 +19,46 @@ const sketch = (p) => {
     // mimics the autoplay policy
     //p.getAudioContext().suspend();
     //p.background(suspendBgColor);
+    
+    noise = new p5.Oscillator('sine');
+    noise.freq(440);
+    noise.amp(0.5);
+    //noise.start();
 
-    noise = new p5.Noise();
+    //noise = new p5.Noise();
     env = new p5.Envelope();
     env.setADSR(0.001, 0.7, 0.2, 0.5);
-    env.setRange(1, 0);
+    env.setRange(0.5, 0);
 
     //cnvs?.mousePressed(p.userStartAudio);
-    //cnvs?.mousePressed(togglePlay);
+    cnvs?.mousePressed(togglePlay);
+    //cnvs?.mousePressed(noise.start);
     //console.log(p)
 
     //console.log(p.getAudioContext())
     //console.log(p.getAudioContext());
     
     fft = new p5.FFT();
-    p.noLoop();
+    //p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
-    //p.background(220);
+    p.background(220);
     soundVisualize();
   };
 
   p.windowResized = () => {
     sizeReset();
   };
+  
+  
+  function togglePlay() {
+    noise.stop();
+    noise.start();
+    //env.play(noise);
+    
+  }
   
 
   function soundVisualize() {
@@ -81,7 +95,6 @@ const sketch = (p) => {
     p.resizeCanvas(w, h);
     //tc.background('#ff00ff80')
     p.image(tc, 0, 0);
-    console.log(tc)
   }
   
   function sizeReset() {
