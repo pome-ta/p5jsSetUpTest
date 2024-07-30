@@ -3,7 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let tc;  // touchCanvas
+  let pg;  // offscreen canvas
   let bgColor;
   let suspendBgColor = '#ffff00';
   let runningBgColor = 220;
@@ -31,6 +31,7 @@ const sketch = (p) => {
     env.setRange(0.5, 0);
 
     //cnvs?.mousePressed(p.userStartAudio);
+    cnvs?.mousePressed(touchGuide);
     cnvs?.mousePressed(togglePlay);
     //cnvs?.mousePressed(noise.start);
     //console.log(p)
@@ -40,18 +41,22 @@ const sketch = (p) => {
     
     fft = new p5.FFT();
     //p.noLoop();
+    console.log(p)
+
+    console.log(cnvs)
+    console.log(pg)
   };
 
   p.draw = () => {
     // put drawing code here
     p.background(220);
     soundVisualize();
+    //p.image(pg, 0, 0);
   };
 
   p.windowResized = () => {
     sizeReset();
   };
-  
   
   function togglePlay() {
     noise.stop();
@@ -59,6 +64,49 @@ const sketch = (p) => {
     //env.play(noise);
     
   }
+  /*
+  p.touchStarted = (event) => {
+  for (const touch of p.touches) {
+    console.log(touch)
+    pg.ellipse(p.mouseX, p.mouseY, 60, 60);
+    }
+    
+    pg.background('#ffff00')
+    p.image(pg, 0, 0);
+    
+    console.log('touchGuide')
+    
+  
+  }
+  */
+  
+  function touchGuide() {
+    
+    //pg.loop()
+    //pg.noFill();
+    //pg.stroke('#ff00ff');
+    // オフスクリーンキャンバスに白線の円を描く
+    
+    
+    
+    
+    /*
+    for (let touch of pg.touches) {
+    pg.circle(touch.x, touch.y, 40);
+  }
+  */
+    //pg.ellipse(p.mouseX, p.mouseY, 60, 60);
+    //console.log(p.mouseX)
+    //pg.loop()
+    //pg.background('#ffff00ff')
+    pg.ellipse(p.mouseX, p.mouseY, 50, 50);
+    p.image(pg, 0, 0);
+    
+  }
+  
+ 
+  
+  
   
 
   function soundVisualize() {
@@ -91,10 +139,11 @@ const sketch = (p) => {
       cnvs = p.createCanvas(w, h);
     }
     
-    tc = p.createGraphics(w, h);
+    pg = p.createGraphics(w, h);
     p.resizeCanvas(w, h);
-    //tc.background('#ff00ff80')
-    p.image(tc, 0, 0);
+    //pg.background('#0000ff80')
+    p.image(pg, 0, 0);
+    
   }
   
   function sizeReset() {
