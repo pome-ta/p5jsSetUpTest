@@ -1,6 +1,9 @@
 import './p5Setup.js';
 import './modules/p5Sound.bundle.js';
 
+
+const title = 'hoge';
+
 const sketch = (p) => {
   let cnvs, w, h;
   let pg;  // offscreen canvas
@@ -19,6 +22,7 @@ const sketch = (p) => {
     // mimics the autoplay policy
     //p.getAudioContext().suspend();
     //p.background(suspendBgColor);
+    //console.log()
     
     noise = new p5.Oscillator('sine');
     noise.freq(440);
@@ -44,13 +48,15 @@ const sketch = (p) => {
     p.background(220);
     //p.background(22);
     //touchGuide()
-    console.log(p.mouseIsPressed);
+    //console.log(p.mouseIsPressed);
     
     soundVisualize();
     
-    if (p.mouseIsPressed) {
-      p.image(pg, 0, 0);
+    p.image(pg, 0, 0);
     pg.remove();  // xxx: 効いてないかも
+    
+    if (p.mouseIsPressed) {
+      
     }
     
     
@@ -59,6 +65,11 @@ const sketch = (p) => {
   p.windowResized = () => {
     sizeReset();
   };
+  
+  
+  p.touchStarted = (event) => {
+  console.log(p.touches)
+  }
   
   function touchPressed(){
     touchGuide();
@@ -82,6 +93,7 @@ const sketch = (p) => {
     pg.fill('#ff00ff80');
     pg.noStroke();
     pg.ellipse(p.mouseX, p.mouseY, 32, 32);
+    
   }
   
  
@@ -137,10 +149,11 @@ const sketch = (p) => {
 document.addEventListener('DOMContentLoaded', () => {
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
-  
+  /*
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
+  */
   
 
   // --- start
