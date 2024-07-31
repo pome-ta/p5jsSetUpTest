@@ -32,18 +32,10 @@ const sketch = (p) => {
 
     //cnvs?.mousePressed(p.userStartAudio);
     //cnvs?.mousePressed(touchGuide);
-    cnvs?.mousePressed(togglePlay);
-    //cnvs?.mousePressed(noise.start);
-    //console.log(p)
-
-    //console.log(p.getAudioContext())
-    //console.log(p.getAudioContext());
+    cnvs?.mousePressed(touchPressed);
     
     fft = new p5.FFT();
     //p.noLoop();
-    console.log(p)
-
-    console.log(cnvs)
     console.log(pg)
   };
 
@@ -54,62 +46,37 @@ const sketch = (p) => {
     //touchGuide()
     
     soundVisualize();
-    //pg.clear()
-    //p.image(pg, 0, 0);
+    
+    p.image(pg, 0, 0);
+    pg.remove();  // xxx: 効いてないかも
   };
 
   p.windowResized = () => {
     sizeReset();
   };
   
+  function touchPressed(){
+    touchGuide();
+    togglePlay();
+  }
+  
+  
   function togglePlay() {
     noise.stop();
     noise.start();
     //env.play(noise);
-    pg.clear()
-    pg.ellipse(p.mouseX, p.mouseY, 50, 50);
-    p.image(pg, 0, 0);
+    
+    //p.image(pg, 0, 0);
     
   }
-  /*
-  p.touchStarted = (event) => {
-  for (const touch of p.touches) {
-    console.log(touch)
-    pg.ellipse(p.mouseX, p.mouseY, 60, 60);
-    }
-    
-    pg.background('#ffff00')
-    p.image(pg, 0, 0);
-    
-    console.log('touchGuide')
-    
   
-  }
-  */
   
   function touchGuide() {
+    pg.clear();
     
-    //pg.loop()
-    //pg.noFill();
-    //pg.stroke('#ff00ff');
-    // オフスクリーンキャンバスに白線の円を描く
-    
-    
-    
-    
-    /*
-    for (let touch of pg.touches) {
-    pg.circle(touch.x, touch.y, 40);
-  }
-  */
-    //pg.ellipse(p.mouseX, p.mouseY, 60, 60);
-    //console.log(p.mouseX)
-    //pg.loop()
-    //pg.background(0,1)
-    p.clear()
-    pg.ellipse(p.mouseX, p.mouseY, 50, 50);
-    p.image(pg, 0, 0);
-    
+    pg.fill('#ff00ff80');
+    pg.noStroke();
+    pg.ellipse(p.mouseX, p.mouseY, 32, 32);
   }
   
  
