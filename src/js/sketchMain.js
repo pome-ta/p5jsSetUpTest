@@ -31,7 +31,7 @@ const sketch = (p) => {
     env.setRange(0.5, 0);
 
     //cnvs?.mousePressed(p.userStartAudio);
-    cnvs?.mousePressed(touchGuide);
+    //cnvs?.mousePressed(touchGuide);
     cnvs?.mousePressed(togglePlay);
     //cnvs?.mousePressed(noise.start);
     //console.log(p)
@@ -50,7 +50,11 @@ const sketch = (p) => {
   p.draw = () => {
     // put drawing code here
     p.background(220);
+    //p.background(22);
+    //touchGuide()
+    
     soundVisualize();
+    //pg.clear()
     //p.image(pg, 0, 0);
   };
 
@@ -62,6 +66,9 @@ const sketch = (p) => {
     noise.stop();
     noise.start();
     //env.play(noise);
+    pg.clear()
+    pg.ellipse(p.mouseX, p.mouseY, 50, 50);
+    p.image(pg, 0, 0);
     
   }
   /*
@@ -98,7 +105,8 @@ const sketch = (p) => {
     //pg.ellipse(p.mouseX, p.mouseY, 60, 60);
     //console.log(p.mouseX)
     //pg.loop()
-    //pg.background('#ffff00ff')
+    //pg.background(0,1)
+    p.clear()
     pg.ellipse(p.mouseX, p.mouseY, 50, 50);
     p.image(pg, 0, 0);
     
