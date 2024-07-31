@@ -44,11 +44,16 @@ const sketch = (p) => {
     p.background(220);
     //p.background(22);
     //touchGuide()
+    console.log(p.mouseIsPressed);
     
     soundVisualize();
     
-    p.image(pg, 0, 0);
+    if (p.mouseIsPressed) {
+      p.image(pg, 0, 0);
     pg.remove();  // xxx: 効いてないかも
+    }
+    
+    
   };
 
   p.windowResized = () => {
