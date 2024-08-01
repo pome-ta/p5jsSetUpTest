@@ -106,7 +106,6 @@ class WebViewController:
 
     def viewDidDisappear_(_self, _cmd, _animated):
       self.refresh_load()
-      
 
     def refreshWebView_(_self, _cmd, _sender):
       sender = ObjCInstance(_sender)
@@ -197,10 +196,8 @@ class NavigationController:
       this = ObjCInstance(_self)
       visibleViewController = this.visibleViewController()
       view = visibleViewController.view()
-      
+
       view.reload()
-      #pdbg.state(view)
-      #visibleViewController.dismissViewControllerAnimated_completion_(True, None)
 
     # --- `UINavigationController` set up
     _methods = [

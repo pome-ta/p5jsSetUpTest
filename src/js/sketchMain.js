@@ -3,6 +3,7 @@ import './modules/p5Sound.bundle.js';
 
 
 const title = 'hoge';
+document.title = title;
 
 const sketch = (p) => {
   let cnvs, w, h;
@@ -68,7 +69,7 @@ const sketch = (p) => {
   
   
   p.touchStarted = (event) => {
-  console.log(p.touches)
+  //console.log(p.touches)
   }
   
   function touchPressed(){
@@ -147,6 +148,7 @@ const sketch = (p) => {
 //console.log(document.ontouchstart)
 
 document.addEventListener('DOMContentLoaded', () => {
+
   const canvasId = 'p5Canvas';
   const canvasTag = document.querySelector(`#${canvasId}`);
   /*
