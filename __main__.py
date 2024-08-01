@@ -101,11 +101,24 @@ class WebViewController:
       navigationItem.title = self.nav_title
       self.refresh_load()
 
+    def viewWillAppear_(_self, _cmd, _animated):
+      print(f'viewWillAppear: {self.webView.title()}')
+
+    def viewDidAppear_(_self, _cmd, _animated):
+      this = ObjCInstance(_self)
+      view = this.view()
+
+      navigationItem = this.navigationItem()
+      navigationItem.title = self.webView.title()
+
     def viewWillDisappear_(_self, _cmd, _animated):
+      print(f'viewWillDisappear: {self.webView.title()}')
       pass
 
     def viewDidDisappear_(_self, _cmd, _animated):
+      print(f'bf_viewDidDisappear: {self.webView.title()}')
       self.refresh_load()
+      print(f'af_viewDidDisappear: {self.webView.title()}')
 
     def refreshWebView_(_self, _cmd, _sender):
       sender = ObjCInstance(_sender)
@@ -124,6 +137,8 @@ class WebViewController:
     _methods = [
       loadView,
       viewDidLoad,
+      viewWillAppear_,
+      viewDidAppear_,
       viewWillDisappear_,
       viewDidDisappear_,
       refreshWebView_,
@@ -160,7 +175,7 @@ class WebViewController:
         url, reloadIgnoringLocalCacheData, timeoutInterval)
       self.webView.loadRequest_(request)
 
-  @on_main_thread
+  #@on_main_thread  # xxx: 不要？
   def _init(self):
     self._override_viewController()
     vc = self._viewController.new().autorelease()
@@ -291,7 +306,7 @@ def present_objc(vc):
 
   while root_vc.presentedViewController():
     root_vc = root_vc.presentedViewController()
-  vc.setModalPresentationStyle(0)
+  vc.setModalPresentationStyle(1)
   root_vc.presentViewController_animated_completion_(vc, True, None)
 
 
