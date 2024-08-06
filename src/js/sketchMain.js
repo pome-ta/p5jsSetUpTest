@@ -18,7 +18,8 @@ const sketch = (p) => {
   
   p.draw = () => {
     p.background(255);
-    p.translate(-w/2,-h/2,0); //moves our drawing origin to the top left corner
+    p.box()
+    p.translate(100,100,-100); //moves our drawing origin to the top left corner
     p.box();
   };
 
