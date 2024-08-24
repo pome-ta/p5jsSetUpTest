@@ -2,24 +2,19 @@
 
 アプデしていく
 
-
 ## 勉強し直し
 
 ### インポート
 
-[p5.js Web Editor で JavaScript のモジュール（ES Modules）を扱う【その2】： simplex-noise.js の CDN からの import でダイナミックインポートを使う #p5.jsWebEditor - Qiita](https://qiita.com/youtoy/items/838dce76d5be0d44fa14)
+[p5.js Web Editor で JavaScript のモジュール（ES Modules）を扱う【その 2】： simplex-noise.js の CDN からの import でダイナミックインポートを使う #p5.jsWebEditor - Qiita](https://qiita.com/youtoy/items/838dce76d5be0d44fa14)
 
 ### インスタンス・グローバル
 
-
 [p5.js 覚え書き](https://zenn.dev/suto3/articles/5e2a357c6be7bdcc4bd5)
-
 
 # 📝 2023/05/31
 
-
-`min` でrollup してもダメでましたわ
-
+`min` で rollup してもダメでましたわ
 
 # 📝 2023/05/30
 
@@ -45,7 +40,6 @@
 
 ```javascript
 import p5 from 'p5/lib/p5.min';
-
 ```
 
 だが、bundle すると、`U+2004` やら`U+2005` やら`U+00a0` やらで吐き出してしまう？
@@ -56,9 +50,9 @@ import p5 from 'p5/lib/p5.min';
 }
 ```
 
-↑　非表示文字たち
+↑ 　非表示文字たち
 
-`min` していない場合だと、22329行目の`165` 宣言のところ
+`min` していない場合だと、22329 行目の`165` 宣言のところ
 
 > // すべての有効な Unicode 空白文字列 eslint-disable-next-line max-len
 
@@ -84,7 +78,7 @@ import p5 from 'p5/lib/p5.min';
 
 ## `p5.sound` って解決してなかったけ？
 
-音を出す方法を忘れておる😇
+音を出す方法を忘れておる 😇
 
 ## タップ判定
 
@@ -100,7 +94,7 @@ issue 上がっているけど、解決していない？
 
 ### あった
 
-[ReactとTypeScriptで始めるp5.js - 頑張らないために頑張る](https://ysko909.github.io/posts/use-p5js-with-react/)
+[React と TypeScript で始める p5.js - 頑張らないために頑張る](https://ysko909.github.io/posts/use-p5js-with-react/)
 
 やはり、えっちらほっちら、投げ合わないといけないみたいだ。。。
 
@@ -137,21 +131,30 @@ src/js/p5Sound.js (2:9)
 
 それとは別に
 
-[iPhone/iPadで動くWebBluetoothアプリをp5.jsで作る方向けのメモ - Qiita](https://qiita.com/tetunori_lego/items/363d0a47a5bbc4ffabd1#web%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8%E3%81%97%E3%81%A6%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E6%BA%96%E5%82%99)
+[iPhone/iPad で動く WebBluetooth アプリを p5.js で作る方向けのメモ - Qiita](https://qiita.com/tetunori_lego/items/363d0a47a5bbc4ffabd1#web%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8%E3%81%97%E3%81%A6%E4%BD%BF%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E6%BA%96%E5%82%99)
 
 メタタグとか入れるか
 
 ```html
-  <head>
-    <!-- ... -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
+<head>
+  <!-- ... -->
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
 
-    <script>
-      window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
-    </script>
-    <!-- ... -->
-  </head>
+  <script>
+    window.addEventListener(
+      'touchmove',
+      function (event) {
+        event.preventDefault();
+      },
+      { passive: false }
+    );
+  </script>
+  <!-- ... -->
+</head>
 ```
 
 # 📝 2023/03/26
@@ -177,7 +180,6 @@ const sketch = (p) => {
 };
 
 const myp5 = new p5(sketch, 'p5Canvas');
-
 ```
 
 この形式で取れるようにしたい
@@ -217,7 +219,6 @@ export default {
   },
   plugins: [nodeResolve(), commonjs()],
 };
-
 ```
 
 ## VSCode での、autocomplete
@@ -226,9 +227,9 @@ export default {
 
 これとか、素直に突っ込めば読めるようになるのかしらん？
 
-## iOS のCodeSandbox app ではbundle できない
+## iOS の CodeSandbox app では bundle できない
 
-まぁしゃあなし、として諦める。基本的に、随時bundle させる必要性もないので
+まぁしゃあなし、として諦める。基本的に、随時 bundle させる必要性もないので
 
 ## 全画面のスクロールバー
 
@@ -236,14 +237,13 @@ export default {
 .p5Canvas {
   display: block;
 }
-
 ```
 
 # 📝 2023/03/25
 
 ## p5.js 良い感じに取り扱いたい
 
-`node_modules` ではなく、ESM としてroot ディレクトリに生成とか
+`node_modules` ではなく、ESM として root ディレクトリに生成とか
 
 ### いい感じにするために
 
@@ -251,7 +251,7 @@ export default {
   - バンドルとして、一つに纏めちゃうから違うかな
   - Codemirror がこれだから統一してみたかった
 - TypeScript
-  - `.js` 食わせて、module　解決のためだけにコンパイル？
+  - `.js` 食わせて、module 　解決のためだけにコンパイル？
 - webpack
   - 標準的だから、一度は触ってみるか？
 
@@ -259,13 +259,13 @@ export default {
 
 あれ？`npm` で落とすと、もうバンドルされている。。。？
 
-[Node.jsでパッケージが参照しているnode_modulesのパスを取得する - tom-256.log](https://mzqvis6akmakplpmcjx3.hatenablog.com/entry/2022/05/21/185607)
+[Node.js でパッケージが参照している node_modules のパスを取得する - tom-256.log](https://mzqvis6akmakplpmcjx3.hatenablog.com/entry/2022/05/21/185607)
 
-[TypeScriptのESMでハマる - くらげになりたい。](https://www.memory-lovers.blog/entry/2022/05/31/110000)
+[TypeScript の ESM でハマる - くらげになりたい。](https://www.memory-lovers.blog/entry/2022/05/31/110000)
 
 [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 
-[VS Code & TypeScriptとp5.jsで始めるモダンなクリエイティブコーディング入門 - ICS MEDIA](https://ics.media/entry/210129/)
+[VS Code & TypeScript と p5.js で始めるモダンなクリエイティブコーディング入門 - ICS MEDIA](https://ics.media/entry/210129/)
 
 `p5` で呼びたく、、、SkyPack であれば。って感じだから、ローカルでゴリっと呼び出すことに関してやってみることをしてみる
 
@@ -273,6 +273,6 @@ export default {
 
 node のバージョンは大きく指定がなかったので、
 
-p5.js Editor　だと14 っぽい
+p5.js Editor 　だと 14 っぽい
 
-[npm ciを使おう あるいはより速く - Qiita](https://qiita.com/mstssk/items/8759c71f328cab802670)
+[npm ci を使おう あるいはより速く - Qiita](https://qiita.com/mstssk/items/8759c71f328cab802670)
