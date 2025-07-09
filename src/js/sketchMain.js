@@ -1,73 +1,105 @@
+//[p5jsSetUpTest/src/js/sketchBook/240727_2244.js at main · pome-ta/p5jsSetUpTest · GitHub](https://github.com/pome-ta/p5jsSetUpTest/blob/main/src/js/sketchBook/240727_2244.js)
+
+
 import './p5Setup.js';
 import './modules/p5Sound.bundle.js';
 
 const sketch = (p) => {
   let cnvs, w, h;
-  let tc;  // touchCanvas
-  let bgColor;
-  let suspendBgColor = '#ffff00';
-  let runningBgColor = 220;
-  let fft;
+  let nowTime, pastTime, diffTime;
+  let nowBeat, pastBeat;
+  let stockBeat;
+  let is_play;
 
-  let noise, env, analyzer;
+  let BPM;
+  let osc, envelope, fft;
+
+  let tSize;
+
+  const signals = [...Array(4).keys()];
+  let wrapSignalSize;
 
   p.setup = () => {
     // put setup code here
-    sizeReset();
-    // ref: [userStartAudio](https://p5js.org/reference/p5/userStartAudio/)
-    // ref: [getAudioContext](https://p5js.org/reference/p5/getAudioContext/)
-    // mimics the autoplay policy
-    //p.getAudioContext().suspend();
-    //p.background(suspendBgColor);
-    
-    noise = new p5.Oscillator('sine');
-    noise.freq(440);
-    noise.amp(0.5);
-    //noise.start();
+    windowSizeUpDate();
+    reset();
+    BPM = 90;
 
-    //noise = new p5.Noise();
-    env = new p5.Envelope();
-    env.setADSR(0.001, 0.7, 0.2, 0.5);
-    env.setRange(0.5, 0);
+    nowTime = 0.0;
+    pastTime = 0.0;
+    diffTime = 0.0;
 
-    //cnvs?.mousePressed(p.userStartAudio);
-    cnvs?.mousePressed(togglePlay);
-    //cnvs?.mousePressed(noise.start);
-    //console.log(p)
+    nowBeat = 0;
+    pastBeat = -1;
 
-    //console.log(p.getAudioContext())
-    //console.log(p.getAudioContext());
-    
+    stockBeat = 0.0;
+
+    is_play = false;
+
+    osc = new p5.Oscillator('sine');
+    osc.freq(440);
+    osc.amp(0.0);
+
+    envelope = new p5.Envelope();
+    // attackTime, decayTime, sustainRatio, releaseTimeを設定
+    envelope.setADSR(0.001, 0.1, 0.0, 0.1);
+    // attackLevel, releaseLevelを設定
+    envelope.setRange(0.1, 0);
+    envelope.play(osc);
+
+    cnvs?.mousePressed(p.userStartAudio);
+    cnvs?.mousePressed(p.play);
+
     fft = new p5.FFT();
-    //p.noLoop();
+    // p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
+    nowTime = p.millis();
+    diffTime = pastTime === 0.0 ? 0.0 : nowTime - pastTime;
+    stockBeat += timeToBeat(diffTime);
+    pastTime = nowTime;
+
+    nowBeat = Math.trunc(stockBeat % 4);
+
+    if (nowBeat !== pastBeat) {
+      if (nowBeat < 1) {
+        osc.freq(880);
+        envelope.play(osc);
+      } else {
+        osc.freq(440);
+        envelope.play(osc);
+      }
+      pastBeat = nowBeat;
+    } else {
+    }
     p.background(220);
-    soundVisualize();
-  };
 
-  p.windowResized = () => {
-    sizeReset();
-  };
-  
-  
-  function togglePlay() {
-    noise.stop();
-    noise.start();
-    //env.play(noise);
-    
-  }
-  
+    p.textSize(tSize * 0.64);
+    p.textFont('monospace');
+    p.textAlign(p.CENTER, p.BOTTOM);
+    p.text(`${BPM} BPM`, w / 2, h / 2 - tSize * 0.24);
 
-  function soundVisualize() {
+    p.fill(220);
+
+    signals.forEach((i) => {
+      if (is_play) {
+        if (i === nowBeat) {
+          p.fill(16);
+        } else {
+          p.fill(220);
+        }
+      }
+      p.circle(wrapSignalSize + tSize * i, h / 2 + tSize * 0.64, tSize * 0.5);
+    });
+
     const spectrum = fft.analyze();
     spectrum.forEach((v, i) => {
       const x = p.map(i, 0, spectrum.length, 0, w);
       const y = -h + p.map(v, 0, 255, h, 0);
-      p.rect(x, h, w / spectrum.length, y);
-      //p.rect(x * 16, h, w / spectrum.length, y);
+      // p.rect(x, h, w / spectrum.length, y);
+      p.rect(x * 16, h, w / spectrum.length, y);
     });
 
     const waveform = fft.waveform();
@@ -80,63 +112,54 @@ const sketch = (p) => {
       p.vertex(x, y);
     });
     p.endShape();
-  }
-  
+  };
 
-  function windowSizeUpDate() {
-    const sizeRatio = 0.92;
-    w = p.windowWidth * sizeRatio;
-    h = p.windowHeight * sizeRatio;
-    if (!cnvs) {
-      cnvs = p.createCanvas(w, h);
+  p.play = () => {
+    // p.userStartAudio();
+    is_play = !is_play;
+    console.log(`play: ${is_play}`);
+    if (is_play) {
+      pastTime = 0.0;
+      diffTime = 0.0;
+      stockBeat = 0.0;
+      pastBeat = -1;
+      osc.start();
+    } else {
+      osc.stop();
     }
-    
-    tc = p.createGraphics(w, h);
-    p.resizeCanvas(w, h);
-    //tc.background('#ff00ff80')
-    p.image(tc, 0, 0);
-  }
-  
-  function sizeReset() {
+  };
+
+  p.windowResized = () => {
     windowSizeUpDate();
-  }
+    reset();
+  };
 
+  const timeToBeat = (t) => (t / 1000 / 60) * BPM;
+
+  const metronom = () => {};
+
+  const windowSizeUpDate = () => {
+    cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
+  };
+
+  const reset = () => {
+    w = p.width;
+    h = p.height;
+    tSize = Math.min(w, h) / 8;
+    wrapSignalSize = (w - tSize * signals.length) / 2 + tSize / 2;
+  };
 };
-
-//console.log(document.ontouchstart)
 
 document.addEventListener('DOMContentLoaded', () => {
   const canvasId = 'p5Canvas';
+  //const myp5 = new p5(sketch, canvasId);
+  new p5(sketch, canvasId);
+  //console.log(myp5)
   const canvasTag = document.querySelector(`#${canvasId}`);
-  
   canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
     passive: false,
   });
-  
+  //myp5.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false, });
 
-  // --- start
-  const myp5 = new p5(sketch, canvasId);
-  /*
-  
-  //const eventName = typeof document.ontouchend !== 'undefined' ? 'touchend' : 'mouseup';
-  
-  const eventName = typeof document.ontouchstart !== 'undefined' ? 'touchstart' : 'mousedown';
-  
-  
-  //ontouchstart
-  //touchstart
-  //mousedown
-  
-  function initAudioContext() {
-    console.log('in')
-    document.removeEventListener(eventName, initAudioContext);
-    // todo: wake up AudioContext
-    //myp5.userStartAudio();
-    myp5.getAudioContext().resume();
-  }
-  
-  document.addEventListener(eventName, initAudioContext);
-  //console.log(document)
-  */
+  //console.log(canvasTag)
 });
-
