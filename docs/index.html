@@ -4,35 +4,25 @@
 <head>
   <meta charset="utf-8" />
   <title>p5.js</title>
-  <meta name="viewport"
-    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-  <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
-  <!-- <script>
-    window.addEventListener(
-      'touchmove',
-      function (event) {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
-  </script> -->
-  <script type="module">
-    import eruda from './js/modules/eruda.js';
-    // import eruda from 'https://cdn.skypack.dev/eruda';
-    eruda.init();
-    console.log('eruda run');
-  </script>
+  <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+
+    <script type="module">
+      import eruda from 'https://cdn.skypack.dev/eruda';
+
+      eruda.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/addons/p5.sound.min.js"></script>
+
 
   <link rel="stylesheet" href="./css/style.css" />
   <script type="module" src="./js/sketchMain.js"></script>
-  <!--<script type="module" src="./js/sketchMain.js" defer></script>-->
 
 </head>
 
-<body>
-  <div id="wrap">
-    <div id="p5Canvas"></div>
-  </div>
-</body>
+<body></body>
 
 </html>
