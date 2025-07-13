@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="50120c78-ac76-4ce5-9a07-77ee9f39ab60" name="変更" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/memo.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rollup.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/modules/eruda.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/modules/p5Main.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/modules/p5Sound.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/p5Main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/p5Setup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/p5Sound.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230327_0111.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230327_1051.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230328_1314.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230328_1904.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230328_1912.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230328_2331.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230328_2336.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230329_1614.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230329_2041.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230329_2050.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230329_2104.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230330_0159.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230330_1258.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230330_1303.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230330_2212.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230331_0012.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230331_1516.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230331_1520.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230525_0208.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/230530_0008.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240722_1638.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240722_2047.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240723_1559.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240725_2140.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240726_1435.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240727_2244.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240728_1836.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240730_1817.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/240806_0223.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchBook/250709_1427.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/sketchMain.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2zoXJpHklDbcGSqc4Xhfgtx3sxQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev/cdn/esm",
+    "last_opened_file_path": "/Users/kenji/Documents/GitHub/p5jsSetUpTest/docs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/新規スクラッチファイル": [
+      "JavaScript"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="デフォルトタスク">
+      <changelist id="50120c78-ac76-4ce5-9a07-77ee9f39ab60" name="変更" comment="" />
+      <created>1752398330692</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752398330692</updated>
+      <workItem from="1752398331999" duration="571000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
