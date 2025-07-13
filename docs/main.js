@@ -1,6 +1,6 @@
-import p5 from 'p5/';
+import p5Origin from 'p5/';
 
-window.p5 = p5;
+window.p5 = p5Origin;
 await import('p5/lib/addons/p5.sound');
 
 const title = 'tap mark';
