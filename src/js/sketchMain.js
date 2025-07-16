@@ -1,165 +1,265 @@
-//[p5jsSetUpTest/src/js/sketchBook/240727_2244.js at main · pome-ta/p5jsSetUpTest · GitHub](https://github.com/pome-ta/p5jsSetUpTest/blob/main/src/js/sketchBook/240727_2244.js)
+//[codeAppSandbox/p5Sandbox/reSoundTest/docs/js/sketches/250505_1244.js at main · pome-ta/codeAppSandbox · GitHub](https://github.com/pome-ta/codeAppSandbox/blob/main/p5Sandbox/reSoundTest/docs/js/sketches/250505_1244.js)
+
 
 
 import './p5Setup.js';
 import './modules/p5Sound.bundle.js';
 
+
+class EventWrapper {
+  constructor() {
+    [this.click, this.start, this.move, this.end, this.isTouch] =
+      /iPhone|iPad|iPod|Android/.test(navigator.userAgent)
+        ? ['click', 'touchstart', 'touchmove', 'touchend', true,]
+        : ['click', 'mousedown', 'mousemove', 'mouseup', false,];
+  }
+}
+
+
+const title = 'tap mark';
+const eventWrap = new EventWrapper();
+
 const sketch = (p) => {
-  let cnvs, w, h;
-  let nowTime, pastTime, diffTime;
-  let nowBeat, pastBeat;
-  let stockBeat;
-  let is_play;
+  let w, h;
+  let setupWidth, setupHeight, setupRatio;
 
-  let BPM;
-  let osc, envelope, fft;
+  let bgColor;
+  let sinOsc;
+  let fft;
 
-  let tSize;
+  const frq = 440;
+  let gainValue;
+  let touchX = null;
+  let touchY = null;
+  const delayTime = 0.2;
 
-  const signals = [...Array(4).keys()];
-  let wrapSignalSize;
+  let ts;
+
+
+  class TapScreen {
+
+    tapSize = 48;
+    baseColrHSB = [0.0, 0.0, 1.0];
+
+    constructor(mainCanvas) {
+      this.p = mainCanvas;
+      this.pg = null;
+      this.x = null;
+      this.y = null;
+    }
+
+    update() {
+      if (this.pg === null && this.x === null && this.y === null) {
+        return;
+      }
+      this.p.image(this.pg, this.x - (this.tapSize / 2), this.y - (this.tapSize / 2));
+    }
+
+    initTapMark() {
+      this.pg = this.pg ?? this.p.createGraphics(this.tapSize, this.tapSize);
+
+      this.pg.colorMode(this.pg.HSB, 1.0, 1.0, 1.0, 1.0);
+      this.pgColor = this.pg.color(...this.baseColrHSB);
+      this.pgColor.setAlpha(0.5);
+      this.pg.fill(this.pgColor);
+
+      this.pg.noStroke();
+      this.pg.circle(this.tapSize / 2, this.tapSize / 2, this.tapSize);
+    }
+
+    tapStarted(x, y) {
+      this.initTapMark();
+      this.x = x;
+      this.y = y;
+
+    }
+    taphMoved(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+    tapEnded() {
+      this.pg?.remove();
+      this.pg = null;
+      //this.pgRemove();
+      // this.x = null;
+      // this.y = null;
+    }
+  };
 
   p.setup = () => {
     // put setup code here
-    windowSizeUpDate();
-    reset();
-    BPM = 90;
+    windowFlexSize(true);
+    p.colorMode(p.HSB, 1.0, 1.0, 1.0, 1.0);
+    bgColor = p.color(0, 0, 64 / 255);
+    p.background(bgColor);
 
-    nowTime = 0.0;
-    pastTime = 0.0;
-    diffTime = 0.0;
-
-    nowBeat = 0;
-    pastBeat = -1;
-
-    stockBeat = 0.0;
-
-    is_play = false;
-
-    osc = new p5.Oscillator('sine');
-    osc.freq(440);
-    osc.amp(0.0);
-
-    envelope = new p5.Envelope();
-    // attackTime, decayTime, sustainRatio, releaseTimeを設定
-    envelope.setADSR(0.001, 0.1, 0.0, 0.1);
-    // attackLevel, releaseLevelを設定
-    envelope.setRange(0.1, 0);
-    envelope.play(osc);
-
-    cnvs?.mousePressed(p.userStartAudio);
-    cnvs?.mousePressed(p.play);
+    sinOsc = new p5.SinOsc();
+    // sinOsc.start();
+    gainValue = sinOsc.output.gain.value
 
     fft = new p5.FFT();
+    p.textAlign(p.CENTER, p.CENTER);
+    p.textSize(32);
+
+    ts = new TapScreen(p);
+    // p.frameRate(0.5);
     // p.noLoop();
   };
 
   p.draw = () => {
     // put drawing code here
-    nowTime = p.millis();
-    diffTime = pastTime === 0.0 ? 0.0 : nowTime - pastTime;
-    stockBeat += timeToBeat(diffTime);
-    pastTime = nowTime;
+    p.background(bgColor);
 
-    nowBeat = Math.trunc(stockBeat % 4);
-
-    if (nowBeat !== pastBeat) {
-      if (nowBeat < 1) {
-        osc.freq(880);
-        envelope.play(osc);
-      } else {
-        osc.freq(440);
-        envelope.play(osc);
-      }
-      pastBeat = nowBeat;
-    } else {
+    let spectrum = fft.analyze();
+    p.noStroke();
+    p.fill(0.2, 0.5, 0.8);
+    for (let i = 0; i < spectrum.length; i++) {
+      let x = p.map(i * 32, 0, spectrum.length, 0, p.width);
+      let h = -p.height + p.map(spectrum[i], 0, 255, p.height, 0);
+      p.rect(x, p.height, p.width / spectrum.length, h);
     }
-    p.background(220);
 
-    p.textSize(tSize * 0.64);
-    p.textFont('monospace');
-    p.textAlign(p.CENTER, p.BOTTOM);
-    p.text(`${BPM} BPM`, w / 2, h / 2 - tSize * 0.24);
-
-    p.fill(220);
-
-    signals.forEach((i) => {
-      if (is_play) {
-        if (i === nowBeat) {
-          p.fill(16);
-        } else {
-          p.fill(220);
-        }
-      }
-      p.circle(wrapSignalSize + tSize * i, h / 2 + tSize * 0.64, tSize * 0.5);
-    });
-
-    const spectrum = fft.analyze();
-    spectrum.forEach((v, i) => {
-      const x = p.map(i, 0, spectrum.length, 0, w);
-      const y = -h + p.map(v, 0, 255, h, 0);
-      // p.rect(x, h, w / spectrum.length, y);
-      p.rect(x * 16, h, w / spectrum.length, y);
-    });
-
-    const waveform = fft.waveform();
+    let waveform = fft.waveform();
     p.noFill();
     p.beginShape();
-    p.stroke(16);
-    waveform.forEach((v, i) => {
-      const x = p.map(i, 0, waveform.length, 0, w);
-      const y = p.map(v, -1, 1, 0, h);
+    p.stroke(0.8, 0.5, 0.8);
+    for (let i = 0; i < waveform.length; i++) {
+      let x = p.map(i, 0, waveform.length, 0, p.width);
+      let y = p.map(waveform[i], -1, 1, 0, p.height);
       p.vertex(x, y);
-    });
-    p.endShape();
-  };
-
-  p.play = () => {
-    // p.userStartAudio();
-    is_play = !is_play;
-    console.log(`play: ${is_play}`);
-    if (is_play) {
-      pastTime = 0.0;
-      diffTime = 0.0;
-      stockBeat = 0.0;
-      pastBeat = -1;
-      osc.start();
-    } else {
-      osc.stop();
     }
+    p.endShape();
+
+    p.noStroke();
+    p.fill(0.0, 0.0, 0.8);
+
+    if (touchX !== null || touchY !== null) {
+      p.text(`${sinOsc.f}`, p.width / 2, p.height / 2);
+      ts.update();
+    }
+
   };
 
-  p.windowResized = () => {
-    windowSizeUpDate();
-    reset();
+  p.touchStarted = (e) => {
+    getTouchXY();
+    sinOsc.freq(frqRatio(touchX));
+    sinOsc.amp(valueRatio(touchY));
+    sinOsc.start();
+
+    ts.tapStarted(touchX, touchY);
+
   };
 
-  const timeToBeat = (t) => (t / 1000 / 60) * BPM;
+  p.touchMoved = (e) => {
+    getTouchXY();
+    sinOsc.freq(frqRatio(touchX));
+    sinOsc.amp(valueRatio(touchY));
 
-  const metronom = () => {};
-
-  const windowSizeUpDate = () => {
-    cnvs = p.createCanvas(p.windowWidth * 0.92, p.windowHeight * 0.92);
+    ts.taphMoved(touchX, touchY);
   };
 
-  const reset = () => {
-    w = p.width;
-    h = p.height;
-    tSize = Math.min(w, h) / 8;
-    wrapSignalSize = (w - tSize * signals.length) / 2 + tSize / 2;
+  p.touchEnded = (e) => {
+    touchX = null;
+    touchY = null;
+    sinOsc.amp(0, delayTime);
+    sinOsc.stop(delayTime + 0.05);
+
+    ts.tapEnded();
+
   };
+
+  p.windowResized = (event) => {
+    windowFlexSize(true);
+  };
+
+  function getTouchXY() {
+    if (eventWrap.isTouch) {
+      for (let touch of p.touches) {
+        touchX = 0 <= touch.x && touch.x <= p.width ? touch.x : null;
+        touchY = 0 <= touch.y && touch.y <= p.height ? touch.y : null;
+      }
+    } else {  // xxx: PC 用。。。ダサい
+      touchX = p.mouseIsPressed && 0 <= p.mouseX && p.mouseX <= p.width ? p.mouseX : null;
+      touchY = p.mouseIsPressed && 0 <= p.mouseY && p.mouseY <= p.height ? p.mouseY : null;
+    }
+  }
+
+  function frqRatio(f) {
+    const fr = (f / (p.width / 2)) * frq;
+    return Math.ceil(fr * 1000) / 1000;
+  }
+
+  function valueRatio(v) {
+    const vl = v === null ? 0 : v / p.height - 1;
+    return vl;
+  }
+
+  function windowFlexSize(isFullSize = false) {
+    const isInitialize =
+      typeof setupWidth === 'undefined' ||
+      typeof setupHeight === 'undefined';
+
+    [setupWidth, setupHeight] = isInitialize
+      ? [p.width, p.height]
+      : [setupWidth, setupHeight];
+
+    const sizeRatio = 0.92;
+    const windowWidth = p.windowWidth * sizeRatio;
+    const windowHeight = p.windowHeight * sizeRatio;
+
+    if (isFullSize) {
+      w = windowWidth;
+      h = windowHeight;
+    } else {
+      const widthRatio =
+        windowWidth < setupWidth ? windowWidth / setupWidth : 1;
+      const heightRatio =
+        windowHeight < setupHeight ? windowHeight / setupHeight : 1;
+
+      setupRatio = Math.min(widthRatio, heightRatio);
+      w = setupWidth * setupRatio;
+      h = setupHeight * setupRatio;
+    }
+    p.resizeCanvas(w, h);
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.title = title ? title : document.title;
+
   const canvasId = 'p5Canvas';
-  //const myp5 = new p5(sketch, canvasId);
-  new p5(sketch, canvasId);
-  //console.log(myp5)
   const canvasTag = document.querySelector(`#${canvasId}`);
-  canvasTag.addEventListener('touchmove', (e) => e.preventDefault(), {
+  canvasTag.style.backgroundColor = 'darkgray';
+
+  canvasTag.addEventListener(eventWrap.move, (e) => e.preventDefault(), {
     passive: false,
   });
-  //myp5.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false, });
 
-  //console.log(canvasTag)
+  document.body.style.backgroundColor = '#121212';
+
+  // --- start
+  const myp5 = new p5(sketch, canvasTag);
+  // todo: set up for sound
+  const wrapDiv = document.querySelector('#wrap');
+  const isRunningColor = wrapDiv.style.backgroundColor;
+  const isSuspendedColor = 'maroon';
+
+  const ctx = myp5.getAudioContext();
+  ctx.addEventListener('statechange', (e) =>
+    ctx.state !== 'running' ? notResume() : null,
+  );
+
+  const isResume = () => {
+    ctx.resume().then(() => {
+      wrapDiv.style.backgroundColor = isRunningColor;
+    });
+    document.removeEventListener(eventWrap.end, isResume);
+  };
+  const notResume = () => {
+    wrapDiv.style.backgroundColor = isSuspendedColor;
+    document.addEventListener(eventWrap.end, isResume);
+  };
+
+  notResume();
 });
+
