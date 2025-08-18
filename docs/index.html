@@ -11,21 +11,20 @@
   <script type="importmap">
     {
       "imports": {
-        "p5/": "https://esm.sh/p5@2.0.4/",
+        "p5/": "https://esm.sh/p5@1.11.8/",
         "eruda": "https://esm.sh/eruda"
       }
     }
   </script>
   <script type="module">
-    
+    import p5 from 'p5/';
     import eruda from 'eruda';
 
     eruda.init();
-    import p5 from 'p5/';
-    
-    
+    window.p5 = p5;
   </script>
 
+  <script type="module" src="./js/sketches/sketch.js" defer></script>
   <style>
     html,
     body {
