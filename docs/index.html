@@ -11,20 +11,24 @@
   <script type="importmap">
     {
       "imports": {
-        "p5/": "https://esm.sh/p5@1.11.8/",
         "eruda": "https://esm.sh/eruda"
       }
     }
   </script>
   <script type="module">
-    import p5 from 'p5/';
     import eruda from 'eruda';
 
     eruda.init();
-    window.p5 = p5;
+    const timeStr = new Date().toLocaleTimeString();
+    console.log(`p5Canvas: ${timeStr}`);
   </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5.sound@latest/dist/p5.sound.min.js"></script>
 
-  <script type="module" src="./js/sketches/sketch.js" defer></script>
+  <!--<script type="module" src="./js/sketches/sketch.js" defer></script>-->
+  
+  <script src="./js/sketches/sketch.js"></script>
   <style>
     html,
     body {
