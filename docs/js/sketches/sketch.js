@@ -16,10 +16,10 @@ const sketch = (p) => {
     p.background(220);
     //cnv.mousePressed(p.userStartAudio());
     //cnv.mousePressed(playSound);
-
+    //p.userStartAudio()
     osc = new p5.Oscillator('sine');
     //osc.start();
-    console.log(p.getAudioContext())
+    //console.log(p.getAudioContext())
     
   };
 
@@ -30,7 +30,7 @@ const sketch = (p) => {
   
   soundCall = () => {
     if (!playing) {
-      //p.userStartAudio();
+      p.userStartAudio();
       osc.start();
       playing = true;
       
@@ -39,7 +39,7 @@ const sketch = (p) => {
   
   p.touchStarted = (e) => {
     //console.log('touchStarted')
-    
+    //soundCall()
   };
 
   p.touchMoved = (e) => {
@@ -47,7 +47,7 @@ const sketch = (p) => {
 
   p.touchEnded = (e) => {
     //console.log('touchEnded')
-    //soundCall()
+    soundCall()
   };
 
   
