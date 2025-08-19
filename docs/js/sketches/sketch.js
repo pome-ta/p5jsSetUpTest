@@ -1,52 +1,64 @@
-let osc, delay, env;
 
-function setup() {
-  let cnv = createCanvas(400, 400);
-  background(220);
-  textAlign(CENTER);
-  textSize(13);
-  text('click and drag mouse', width/2, 150);
 
-  osc = new p5.Oscillator('sawtooth');
-  osc.amp(0.74);
-  env = new p5.Envelope(0.01);
-  delay = new p5.Delay(0.12, 0.7);
+const sketch = (p) => {
+  let w = p.windowWidth;
+  let h = p.windowHeight;
+
+  let osc;
+  let reverb;
+  let playing = false;
+
+  p.setup = () => {
+    // put setup code here
+    
+
+    const cnv = p.createCanvas(w, h);
+    p.background(220);
+    //cnv.mousePressed(p.userStartAudio());
+    //cnv.mousePressed(playSound);
+
+    osc = new p5.Oscillator('sine');
+    //osc.start();
+    console.log(p.getAudioContext())
+    
+  };
+
+  p.draw = () => {
+    // put drawing code here
+    
+  };
   
-  osc.disconnect();
-  osc.connect(env);
-  env.disconnect();
-  env.connect(delay);
-
-  cnv.mousePressed(oscStart);
-  cnv.mouseReleased(oscStop);
-  //cnv.mouseOut(oscStop);
-  describe('Click and release or hold, to play a square wave with delay effect.');
-}
-
-function oscStart() {
-  background(0, 255, 255);
-  text('release to hear delay', width/2, 150);
-  osc.start();
-  env.triggerAttack();
-}
-
-function oscStop() {
-  background(220);
-  text('click and drag mouse', width/2, 150);
-  env.triggerRelease();
-} 
+  soundCall = () => {
+    if (!playing) {
+      //p.userStartAudio();
+      osc.start();
+      playing = true;
+      
+    }
+  }
   
-function draw() {
-  osc.freq(map(mouseY, height, 0, 440, 880))
-  let dtime = map(mouseX, 0, width, 0.1, 0.5);
-  delay.delayTime(dtime);
-}
+  p.touchStarted = (e) => {
+    //console.log('touchStarted')
+    
+  };
 
-function touchStarted(e) {
-    oscStart();
+  p.touchMoved = (e) => {
+  };
+
+  p.touchEnded = (e) => {
+    //console.log('touchEnded')
+    //soundCall()
+  };
+
+  
+
+  p.windowResized = (e) => {
+    w = p.windowWidth;
+    h = p.windowHeight;
+    p.resizeCanvas(w, h);
+  };
+
+  
 };
 
-function touchEnded(e) {
-    oscStop();
-};
-
+new p5(sketch);
