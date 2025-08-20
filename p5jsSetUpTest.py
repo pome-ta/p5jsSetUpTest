@@ -48,9 +48,7 @@ WKContentView = ObjCClass('WKContentView')  # todo: 型確認用
 NSNotificationCenter = ObjCClass('NSNotificationCenter')
 
 # xxx: iPad(mac) 挙動対策
-UIDevice = ObjCClass('UIDevice')
-
-IS_PHONE = True if UIDevice.currentDevice.model == 'iPhone' else False
+IS_PHONE = True if ObjCClass('UIDevice').currentDevice.model == 'iPhone' else False
 
 
 class WebViewController(UIViewController):
